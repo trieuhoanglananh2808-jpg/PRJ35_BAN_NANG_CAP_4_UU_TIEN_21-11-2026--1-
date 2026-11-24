@@ -1,0 +1,2 @@
+/Workspace_PRJ35/02_MÃ_NGUỒN_CODE/data/nguon_goc/26_2521001040_Triệu[[:space:]]Hoàng[[:space:]]Lan[[:space:]]Anh_CSV1.csv filter=lfs diff=lfs merge=lfs -text
+/Workspace_PRJ35/02_MÃ_NGUỒN_CODE/data/power_clean_csv1.csv filter=lfs diff=lfs merge=lfs -text

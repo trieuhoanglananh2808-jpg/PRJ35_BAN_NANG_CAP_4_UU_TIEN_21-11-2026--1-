@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-23",
+  "research_branches": 3,
+  "research_states": 17,
+  "source_hashes_unchanged": true,
+  "source_rows": {
+    "electricity": 2075259,
+    "weather": 34608
+  },
+  "unit_tests_passed": 6,
+  "page_branch_checks_passed": 15,
+  "browser": {
+    "errors": [],
+    "research_comparison_download": true,
+    "upload_real_30_weather_rows": true,
+    "normalize_step": true,
+    "processed_csv_download": true
+  },
+  "limitations": [
+    "Không huấn luyện lại mô hình; dashboard này minh họa tiền xử lý.",
+    "Tệp tải lên giới hạn 50 MiB và 200.000 dòng; không lấy mẫu âm thầm.",
+    "Các số kiểm tra mới tính từ dữ liệu gốc, không mặc nhiên là bảng đã có trong PDF.",
+    "PDF và dashboard HTML cũ không thay đổi trong tác vụ này."
+  ]
+}

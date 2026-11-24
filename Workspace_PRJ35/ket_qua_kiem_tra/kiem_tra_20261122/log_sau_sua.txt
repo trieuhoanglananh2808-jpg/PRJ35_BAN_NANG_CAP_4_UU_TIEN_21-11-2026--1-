@@ -1,0 +1,465 @@
+Running: TOAN_BO_MA_NGUON_PRJ35.py
+ so_dong  chunksize  ram_chunk_max_byte
+ 2075259     100000            12042810
+Điện: 2075259 dòng; thời tiết: 34608 dòng
+ latitude  longitude  elevation  utc_offset_seconds      timezone timezone_abbreviation
+48.822495   2.288136       46.0                7200 Europe/Berlin                 GMT+2
+Mốc không đọc được (điện, thời tiết): 757566 7680
+Bảng ghép: (2075259, 18)
+phien_ban  bo_nho_byte  bo_nho_MiB
+  float64    269783802  257.285883
+  float32    161870334  154.371580
+         noi_dung  khop
+   Số dòng và cột  True
+Tên và thứ tự cột  True
+     Kiểu dữ liệu  True
+     Chỉ mục dòng  True
+  Toàn bộ giá trị  True
+Dung lượng bảng ghép Parquet (MiB): 30.346888542175293
+                truoc_byte  category_byte   giam_pct
+thu_trong_tuan     8301036        2075287  74.999663
+thang              8301036        2075307  74.999422
+                       so_o_thieu_dien
+Date                            353031
+Global_active_power             115810
+Global_intensity                119337
+Global_reactive_power            69868
+Sub_metering_1                  361064
+Sub_metering_2                  211083
+Sub_metering_3                  282851
+Time                            247603
+Voltage                         275780
+                           so_o_thieu_thoi_tiet
+time                                       3898
+RELATIVE_HUMIDITY_2M (%)                   2004
+dew_point_2m (°C)                          3187
+apparent_temperature (°C)                  1858
+wind_speed_10m (km/h)                      4043
+precipitation (mm)                         3123
+Chuỗi lỗi: <ArrowStringArray>
+['-', '3,700 USD', '2,772 kg', '2,852 USD', '2,920 %', '6.072 kg']
+Length: 6, dtype: str
+Cực trị: [ 9.999e+03 -1.000e+00 -3.040e+00 -2.330e+00]
+           so_dong   so_o_so  o_thieu  o_khong_doc  loi_thoi_gian  dong_co_van_de  chi_loi_gio  chi_loi_so  loi_ca_hai
+bang                                                                                                                  
+Điện       2075259  14526813  1435793      1915477         757566         1855819       125452     1098253      632114
+Thời tiết    34608    173040    14215         7287           7680           20806         3937       13126        3743
+                                         so_dong_can_xu_ly
+gio_suy_ra                                            7680
+apparent_temperature_c_thieu_truoc_dien               2976
+relative_humidity_pct_thieu_truoc_dien                3259
+dew_point_c_thieu_truoc_dien                          5152
+wind_speed_kmh_thieu_truoc_dien                       5672
+precipitation_mm_thieu_truoc_dien                     4443
+       apparent_temperature_c  ...  precipitation_mm
+count            34607.000000  ...      34608.000000
+min                -15.000000  ...          0.000000
+mean                 9.035938  ...          0.063939
+max                 35.400000  ...          7.200000
+
+[4 rows x 5 columns]
+                  cot  so_dong  khong_doc_so_sau_chuan_hoa  ngoai_nguong_phuong_an  can_dien_theo_phuong_an  ty_le_can_dien_pct
+  Global_active_power  2075259                      196665                   90575                   287240           13.841164
+Global_reactive_power  2075259                      128488                   56821                   185309            8.929440
+              Voltage  2075259                      432568                  173186                   605754           29.189320
+     Global_intensity  2075259                      201572                   74634                   276206           13.309471
+       Sub_metering_1  2075259                      558722                  181695                   740417           35.678294
+       Sub_metering_2  2075259                      336699                  114575                   451274           21.745430
+       Sub_metering_3  2075259                      417824                  145429                   563253           27.141335
+count    1442.000000
+mean       13.840084
+std         9.082555
+min         9.791667
+25%        12.222222
+50%        12.777778
+75%        13.333333
+max       100.000000
+Name: ty_le_can_dien_pct, dtype: float64
+ nguong_can_dien_pct  so_ngay_du_thoi_luong_dat_nguong  so_ngay_du_thoi_luong_vuot_nguong
+                   0                                 0                               1440
+                   5                                 0                               1440
+                  10                                 1                               1439
+                  15                              1400                                 40
+                  20                              1418                                 22
+                  50                              1421                                 19
+                 100                              1440                                  0
+dat_nguong_20pct    1418
+dat_nguong_15pct    1400
+dtype: int64
+Số giờ: 34589 | Đủ 60 phút: 34587
+Bảng giờ: (34589, 15) | Bảng ngày: (1442, 20)
+       cong_suat_20pct_kw  ...  dien_nang_15pct_kwh
+count         1418.000000  ...          1400.000000
+mean             1.102134  ...            26.424424
+std              0.413982  ...             9.929550
+min              0.199330  ...             4.783917
+25%              0.833196  ...            20.006025
+50%              1.092456  ...            26.204775
+75%              1.330821  ...            31.931171
+max              3.312135  ...            79.491233
+
+[8 rows x 4 columns]
+      ngay  cong_suat_tb_kw  dien_nang_ngay_kwh  ty_le_can_dien_pct  dat_nguong_15pct
+2006-12-23         3.312135           79.491233           13.472222              True
+2007-02-03         2.801269           67.230467           13.125000              True
+2006-12-26         2.731552           65.557250           12.222222              True
+2007-02-18         2.670715           64.097150           12.916667              True
+2007-02-04         2.507926           60.190233           12.500000              True
+2007-02-11         2.473505           59.364117           12.152778              True
+2007-03-31         2.441551           58.597217           12.777778              True
+2007-03-11         2.421591           58.118183           13.263889              True
+2006-12-31         2.420640           58.095367           13.819444              True
+2008-11-23         2.367365           56.816750           13.263889              True
+ gio_trong_ngay  so_gio  cong_suat_tb_kw  dien_nang_tb_kwh  nguong_can_dien_pct
+              0    1418         0.674001          0.674001                   20
+              1    1418         0.553324          0.553324                   20
+              2    1418         0.495099          0.495099                   20
+              3    1418         0.458637          0.458637                   20
+              4    1418         0.457745          0.457745                   20
+              5    1418         0.467234          0.467234                   20
+              6    1418         0.801811          0.801811                   20
+              7    1418         1.507288          1.507288                   20
+              8    1418         1.464061          1.464061                   20
+              9    1418         1.336780          1.336780                   20
+             10    1418         1.266761          1.266761                   20
+             11    1418         1.253133          1.253133                   20
+             12    1418         1.218028          1.218028                   20
+             13    1418         1.154178          1.154178                   20
+             14    1418         1.092980          1.092980                   20
+             15    1418         1.003491          1.003491                   20
+             16    1418         0.962779          0.962779                   20
+             17    1418         1.069378          1.069378                   20
+             18    1418         1.338252          1.338252                   20
+             19    1418         1.740861          1.740861                   20
+             20    1418         1.906771          1.906771                   20
+             21    1418         1.884828          1.884828                   20
+             22    1418         1.428214          1.428214                   20
+             23    1418         0.915586          0.915586                   20
+              0    1400         0.670966          0.670966                   15
+              1    1400         0.550797          0.550797                   15
+              2    1400         0.493920          0.493920                   15
+              3    1400         0.458733          0.458733                   15
+              4    1400         0.457682          0.457682                   15
+              5    1400         0.468565          0.468565                   15
+              6    1400         0.803582          0.803582                   15
+              7    1400         1.509832          1.509832                   15
+              8    1400         1.464093          1.464093                   15
+              9    1400         1.333071          1.333071                   15
+             10    1400         1.262808          1.262808                   15
+             11    1400         1.247979          1.247979                   15
+             12    1400         1.209826          1.209826                   15
+             13    1400         1.150195          1.150195                   15
+             14    1400         1.091053          1.091053                   15
+             15    1400         1.001476          1.001476                   15
+             16    1400         0.959168          0.959168                   15
+             17    1400         1.065196          1.065196                   15
+             18    1400         1.335513          1.335513                   15
+             19    1400         1.743265          1.743265                   15
+             20    1400         1.909380          1.909380                   15
+             21    1400         1.890301          1.890301                   15
+             22    1400         1.430447          1.430447                   15
+             23    1400         0.916576          0.916576                   15
+thu_trong_tuan  so_ngay  cong_suat_tb_kw  dien_nang_tb_kwh  nguong_can_dien_pct
+             2      203         1.011853         24.284475                   20
+             3      203         1.079433         25.906399                   20
+             4      204         1.093759         26.250216                   20
+             5      203         0.992201         23.812825                   20
+             6      204         1.053847         25.292324                   20
+             7      200         1.256903         30.165663                   20
+             8      201         1.230777         29.538651                   20
+             2      199         1.006788         24.162906                   15
+             3      201         1.077212         25.853095                   15
+             4      200         1.093663         26.247921                   15
+             5      202         0.993442         23.842600                   15
+             6      203         1.052567         25.261597                   15
+             7      198         1.256772         30.162522                   15
+             8      197         1.231648         29.559545                   15
+thang  so_ngay  cong_suat_tb_kw  dien_nang_tb_kwh  nguong_can_dien_pct
+    1      121         1.470139         35.283329                   20
+    2      113         1.307898         31.389563                   20
+    3      122         1.241690         29.800555                   20
+    4      117         1.060286         25.446872                   20
+    5      124         1.040624         24.974980                   20
+    6      117         0.922747         22.145921                   20
+    7      124         0.712714         17.105147                   20
+    8      117         0.584904         14.037696                   20
+    9      116         0.986111         23.666669                   20
+   10      124         1.147806         27.547339                   20
+   11      115         1.302485         31.259643                   20
+   12      108         1.493478         35.843463                   20
+    1      120         1.466734         35.201617                   15
+    2      112         1.307946         31.390708                   15
+    3      122         1.241690         29.800555                   15
+    4      115         1.056943         25.366621                   15
+    5      124         1.040624         24.974980                   15
+    6      116         0.924438         22.186506                   15
+    7      122         0.713514         17.124344                   15
+    8      115         0.581814         13.963533                   15
+    9      116         0.986111         23.666669                   15
+   10      121         1.143556         27.445342                   15
+   11      113         1.304403         31.305684                   15
+   12      104         1.495249         35.885966                   15
+    thanh_phan  dien_nang_kwh  ty_trong_pct  nguong_cong_suat_pct  so_ngay
+     nhom1_kwh    2291.044500      6.108177                    20     1418
+     nhom2_kwh    2684.765500      7.157880                    20     1418
+     nhom3_kwh   13204.951500     35.205852                    20     1418
+chenh_lech_kwh   19327.069088     51.528091                    20     1418
+     nhom1_kwh    2264.599000      6.121498                    15     1400
+     nhom2_kwh    2638.140500      7.131229                    15     1400
+     nhom3_kwh   13030.965000     35.224352                    15     1400
+chenh_lech_kwh   19060.489071     51.522921                    15     1400
+Phút chênh lệch âm: 16173
+        bien_thoi_tiet  r_pearson  nguong_can_dien_pct  so_cap_ngay
+nhiet_do_cam_nhan_tb_c  -0.554564                   20         1418
+          do_am_tb_pct   0.422148                   20         1418
+       diem_suong_tb_c  -0.474881                   20         1418
+     toc_do_gio_tb_kmh   0.134528                   20         1418
+           tong_mua_mm  -0.011441                   20         1418
+nhiet_do_cam_nhan_tb_c  -0.552622                   15         1400
+          do_am_tb_pct   0.422834                   15         1400
+       diem_suong_tb_c  -0.473071                   15         1400
+     toc_do_gio_tb_kmh   0.127761                   15         1400
+           tong_mua_mm  -0.012432                   15         1400
+Số tuần đủ 7 ngày đạt ngưỡng 20%: 195
+       tb_ngay_thuong_kwh  tb_cuoi_tuan_kwh  chenh_lech_kwh_ngay
+count          195.000000        195.000000           195.000000
+mean            25.202733         29.852391             4.649658
+std              7.297319         10.976062             7.590806
+min              5.062113          4.920908           -29.913838
+25%             20.622642         22.599542             0.192630
+50%             25.959797         30.188417             4.420467
+75%             30.657828         36.008200             8.835600
+max             44.960980         63.710350            31.697797
+Tuần trong lịch: 205 | Tuần được chọn: 195
+Tuần bị loại: 10
+1    0.126811
+2    0.064553
+3    0.166141
+4    0.097511
+Name: Tương quan theo độ trễ tuần, dtype: float64
+ tre_tuan  so_tuan  chenh_lech_tb  sai_so_chuan        z      p_value  can_duoi_95  can_tren_95
+        4      195       4.649658      0.647798 7.177631 7.092953e-13     3.379996     5.919319
+        8      195       4.649658      0.733561 6.338476 2.320493e-10     3.211905     6.087411
+       12      195       4.649658      0.798920 5.819930 5.887233e-09     3.083804     6.215512
+ so_tuan  chenh_lech_tb        t  df      p_value  can_duoi_95  can_tren_95
+     195       4.649658 8.553629 194 3.566524e-15     3.577555     5.721761
+2075259 dòng; 1442 ngày
+dat_quy_tac_thu      1250
+so_moc_suy_ra      757566
+dtype: int64
+Ngày trong lịch: 1442
+Ngày đủ đầu vào và nhãn thử: 465
+            dien_tre_1_kw  dien_tre_7_kw  ...  thang  muc_tieu_kw
+ngay                                      ...                    
+2006-12-16            NaN            NaN  ...     12          NaN
+2006-12-17            NaN            NaN  ...     12     2.352000
+2006-12-18       2.352000            NaN  ...     12     1.533600
+2006-12-19       1.533600            NaN  ...     12          NaN
+2006-12-20            NaN            NaN  ...     12          NaN
+2006-12-21            NaN            NaN  ...     12     1.201279
+2006-12-22       1.201279            NaN  ...     12     1.631854
+2006-12-23       1.631854            NaN  ...     12     3.301351
+2006-12-24       3.301351         2.3520  ...     12     1.786161
+2006-12-25       1.786161         1.5336  ...     12          NaN
+
+[10 rows x 8 columns]
+              tu_ngay   den_ngay  so_ngay_lich  so_ngay_du  so_ngay_loai
+tap                                                                     
+train      2006-12-16 2009-06-24           922         331           591
+validation 2009-06-25 2010-02-10           231          68           163
+test       2010-02-11 2010-11-26           289          66           223
+                       ngay_lich  du_nhan  du_dau_vao_va_nhan
+tap        thang_lich                                        
+validation 2009-06             6        4                   1
+           2009-07            31       28                  13
+           2009-08            31       27                  13
+           2009-09            30       27                  13
+           2009-10            31       27                   5
+           2009-11            30       28                  17
+           2009-12            31       24                   0
+           2010-01            31       24                   2
+           2010-02            10        7                   4
+test       2010-02            18       16                   0
+           2010-03            31       25                   1
+           2010-04            30       26                   5
+           2010-05            31       30                  18
+           2010-06            30       28                  15
+           2010-07            31       27                   6
+           2010-08            31       21                   6
+           2010-09            30       23                   7
+           2010-10            31       26                   3
+           2010-11            26       22                   5
+Số dòng train / validation / test: 331 68 66
+Đầu vào: ['dien_tre_1_kw', 'dien_tre_7_kw', 'tb_7_ngay_truoc_kw', 'nhiet_do_truoc_1', 'nhiet_do_tb_7_truoc', 'thu', 'thang']
+Có biến nhiệt độ quá khứ: ['nhiet_do_truoc_1', 'nhiet_do_tb_7_truoc']
+Kích thước train / validation / test: (331, 22) (68, 22) (66, 22)
+            so__dien_tre_1_kw  so__dien_tre_7_kw  so__tb_7_ngay_truoc_kw  so__nhiet_do_truoc_1  so__nhiet_do_tb_7_truoc  lich__thu_1
+ngay                                                                                                                                
+2007-01-02           1.651290           3.405913                2.185028             -0.410205                -1.099571          1.0
+2007-01-03          -0.470402          -0.192250                1.491451             -0.895266                -1.015907          0.0
+2007-01-04          -0.844900           0.628340                1.356072             -0.729278                -0.895412          0.0
+2007-01-05           2.405354           2.295388                1.663480             -0.405513                -0.720837          0.0
+2007-01-06           1.614335           1.719090                1.538531             -0.265332                -0.527977          0.0
+                cot  trung_binh_train  do_lech_chuan_train
+      dien_tre_1_kw          1.120472             0.477354
+      dien_tre_7_kw          1.164501             0.460793
+ tb_7_ngay_truoc_kw          1.140524             0.378575
+   nhiet_do_truoc_1          8.005728             7.103913
+nhiet_do_tb_7_truoc          7.629343             6.901117
+22 cột
+['dien_tre_1_kw', 'dien_tre_7_kw', 'tb_7_ngay_truoc_kw', 'nhiet_do_truoc_1', 'nhiet_do_tb_7_truoc', 'thu_1', 'thu_2', 'thu_3']
+            thuc_te_thu_kw  du_bao_kw  sai_so_kw
+ngay                                            
+2009-06-25        0.544326   0.809031   0.264704
+2009-07-09        0.602889   0.877321   0.274432
+2009-07-10        0.836888   0.601462  -0.235425
+2009-07-11        0.698233   0.867968   0.169735
+2009-07-12        0.367467   0.997854   0.630388
+            thuc_te_thu_kw  du_bao_ols_kw  sai_so_kw
+ngay                                                
+2009-06-25        0.544326       0.873214   0.328888
+2009-07-09        0.602889       0.755984   0.153095
+2009-07-10        0.836888       0.691725  -0.145163
+2009-07-11        0.698233       0.967915   0.269681
+2009-07-12        0.367467       0.813262   0.445796
+            thuc_te_thu_kw  du_bao_rf_kw
+ngay                                    
+2009-06-25        0.544326      0.887942
+2009-07-09        0.602889      0.806690
+2009-07-10        0.836888      0.727879
+2009-07-11        0.698233      0.807128
+2009-07-12        0.367467      0.717423
+  phuong_phap  so_ngay   MAE_kw  RMSE_kw       R2  MAPE_pct  so_ngay_MAPE  MAE_kwh_ngay  giam_MAE_pct  giam_RMSE_pct
+     Baseline       68 0.220187 0.277205 0.489422 24.382710            68      5.284489      0.000000       0.000000
+          OLS       68 0.199910 0.258391 0.556377 20.544008            68      4.797851      9.208792       6.787135
+Random Forest       68 0.183718 0.233622 0.637352 20.691088            68      4.409234     16.562711      15.722476
+                       phuong_an   MAE_kw  chenh_MAE_kw
+     OLS 5 biến (không nhiệt độ) 0.197035      0.000000
+OLS 7 biến (có nhiệt độ quá khứ) 0.199910      0.002875
+                              phien_ban  test_doc_lap_moi tieu_chi_chinh ung_vien_tu_validation                          du_lieu_fit  rf_so_cay  rf_do_sau  rf_la_toi_thieu  random_state  nguong_MAPE_kw
+7 biến, sửa sau lần đánh giá test trước             False         MAE_kw          Random Forest 331 ngày train, không gộp validation        200          5                5            42             0.1
+ luot       mo_hinh  so_ngay_hoc  so_ngay_cham    tu_ngay   den_ngay  MAE_kw  RMSE_kw
+    1      Baseline          216            60 2008-08-20 2009-02-15  0.3338   0.4375
+    1           OLS          216            60 2008-08-20 2009-02-15  0.2735   0.3503
+    1 Random Forest          216            60 2008-08-20 2009-02-15  0.2410   0.3244
+    2      Baseline          276            71 2009-02-16 2009-08-14  0.2719   0.3474
+    2           OLS          276            71 2009-02-16 2009-08-14  0.2330   0.2805
+    2 Random Forest          276            71 2009-02-16 2009-08-14  0.2056   0.2579
+    3      Baseline          347            52 2009-08-15 2010-02-10  0.2117   0.2726
+    3           OLS          347            52 2009-08-15 2010-02-10  0.2184   0.2800
+    3 Random Forest          347            52 2009-08-15 2010-02-10  0.1853   0.2407
+            nhan_thu_kw  Baseline       OLS  Random Forest
+ngay                                                      
+2010-03-03     0.664811  1.330817  1.056975       0.704713
+2010-04-11     1.125464  1.183375  1.044046       0.980325
+2010-04-12     1.011099  0.786222  0.834311       1.004613
+2010-04-13     1.061649  1.282381  1.062160       1.057441
+2010-04-14     1.173315  1.114901  0.987180       1.071345
+  phuong_phap  so_ngay   MAE_kw  RMSE_kw       R2  MAPE_pct  so_ngay_MAPE  MAE_kwh_ngay  giam_MAE_pct  giam_RMSE_pct
+     Baseline       66 0.179496 0.237202 0.426067 24.708658            66      4.307895      0.000000       0.000000
+          OLS       66 0.155044 0.207992 0.558716 18.810285            66      3.721055     13.622442      12.314362
+Random Forest       66 0.169804 0.212191 0.540722 20.700380            66      4.075298      5.399323      10.544399
+             Baseline     OLS  Random Forest  so_ngay
+Cuối tuần      0.2039  0.2004         0.2263       19
+Ngày thường    0.1696  0.1367         0.1470       47
+      mo_hinh   so_voi  tre_ngay  so_ngay  chenh_MAE_kw  sai_so_chuan  p_value  p_bonferroni_3  can_duoi_95  can_tren_95
+Random Forest      OLS         7       68     -0.016192      0.016677 0.331572        0.994715    -0.048878     0.016494
+Random Forest      OLS        14       68     -0.016192      0.017183 0.346012        1.000000    -0.049870     0.017486
+Random Forest      OLS        28       68     -0.016192      0.017463 0.353809        1.000000    -0.050420     0.018035
+Random Forest Baseline         7       68     -0.036469      0.030319 0.229036        0.687107    -0.095893     0.022955
+Random Forest Baseline        14       68     -0.036469      0.030872 0.237492        0.712476    -0.096978     0.024040
+Random Forest Baseline        28       68     -0.036469      0.027821 0.189910        0.569731    -0.090997     0.018059
+          OLS Baseline         7       68     -0.020277      0.033382 0.543574        1.000000    -0.085703     0.045150
+          OLS Baseline        14       68     -0.020277      0.036250 0.575917        1.000000    -0.091325     0.050771
+          OLS Baseline        28       68     -0.020277      0.035110 0.563592        1.000000    -0.089091     0.048538
+  phuong_phap  fit_ms  predict_ms  ram_dinh_tien_trinh_MiB
+     Baseline     NaN       0.490                  155.613
+          OLS  26.500       3.770                  158.605
+Random Forest 197.835      10.138                  158.805
+Hệ số chặn (kW): 0.8897530816542312
+              dac_trung  he_so_kw
+      so__dien_tre_1_kw  0.131493
+      so__dien_tre_7_kw  0.003902
+ so__tb_7_ngay_truoc_kw  0.179257
+   so__nhiet_do_truoc_1 -0.068749
+so__nhiet_do_tb_7_truoc  0.027379
+            lich__thu_1  0.228656
+            lich__thu_2  0.193814
+            lich__thu_3  0.168501
+            lich__thu_4  0.190321
+            lich__thu_5  0.387012
+            lich__thu_6  0.311275
+          lich__thang_2 -0.042750
+          lich__thang_3  0.131299
+          lich__thang_4 -0.033039
+          lich__thang_5  0.070820
+          lich__thang_6  0.052318
+          lich__thang_7 -0.048572
+          lich__thang_8 -0.157374
+          lich__thang_9  0.081954
+         lich__thang_10  0.012097
+         lich__thang_11 -0.075122
+         lich__thang_12  0.042178
+nhom
+tb_7_ngay_truoc_kw     44.106
+dien_tre_1_kw          34.780
+dien_tre_7_kw           8.958
+nhiet_do_truoc_1        3.642
+thu                     3.555
+nhiet_do_tb_7_truoc     3.434
+thang                   1.526
+          dac_trung  tang_MAE_tb_kw  do_lech_chuan_lap_kw
+ tb_7_ngay_truoc_kw         0.10106               0.01752
+      dien_tre_1_kw         0.04413               0.01519
+                thu         0.01220               0.00345
+      dien_tre_7_kw         0.00551               0.00379
+nhiet_do_tb_7_truoc         0.00411               0.00266
+   nhiet_do_truoc_1         0.00322               0.00264
+              thang         0.00191               0.00144
+ nguong_tung_cot_pct  so_ngay  ty_trong_sub3_pct
+                  20        0                NaN
+                  30        0                NaN
+                  40     1417          35.207703
+                 trang_thai  so_ngay
+         Đủ đầu vào và nhãn       66
+Đủ đầu vào nhưng thiếu nhãn       17
+Thiếu đầu vào nhưng đủ nhãn      178
+               Thiếu cả hai       28
+Số dòng: 2075259
+Nhãn thời gian trùng theo vị trí: True
+                  cot  so_dong_khac  so_dong_khac_nguong_1e6  ty_le_khac_pct  chenh_lech_lon_nhat
+  Global_active_power         57524                        0        2.771895         6.666667e-07
+Global_reactive_power         24402                        0        1.175853         6.666667e-08
+              Voltage        145593                        0        7.015654         1.507921e-05
+     Global_intensity         45502                        0        2.192594         1.666667e-06
+       Sub_metering_1         14668                        0        0.706803         4.285714e-06
+       Sub_metering_2         34816                        0        1.677670         2.666667e-06
+       Sub_metering_3         44636                        0        2.150864         1.821086e-06
+                  cot  so_dong_khac  so_dong_khac_nguong_1e6  ty_le_khac_pct  chenh_lech_lon_nhat
+  Global_active_power         57524                        0        2.771895         6.666667e-07
+Global_reactive_power         24402                        0        1.175853         6.666667e-08
+              Voltage        145593                        0        7.015654         1.507921e-05
+     Global_intensity         45502                        0        2.192594         1.666667e-06
+       Sub_metering_1         14668                        0        0.706803         4.285714e-06
+       Sub_metering_2         34816                        0        1.677670         2.666667e-06
+       Sub_metering_3         44636                        0        2.150864         1.821086e-06
+Running: bo_sung_thuc_nghiem.py
+       tap         phuong_an  ngay_lich  so_ngay_phat  ty_le_phat_pct  so_ngay_cham   MAE_kw  RMSE_kw
+validation                RF        231            81       35.064935            68 0.183718 0.233622
+validation          Baseline        231           199       86.147186           167 0.235583 0.297409
+validation Baseline du phong        231           118       51.082251            99 0.246158 0.310526
+validation          He thong        231           199       86.147186           167 0.220733 0.281756
+      test                RF        289            83       28.719723            66 0.169804 0.212191
+      test          Baseline        289           243       84.083045           205 0.227267 0.310811
+      test Baseline du phong        289           160       55.363322           139 0.249949 0.340230
+      test          He thong        289           243       84.083045           205 0.224146 0.304934
+ nguong_pct mo_hinh  ngay_train  ngay_validation  MAE_mau_rieng_kw  ngay_chung  MAE_cung_ngay_nhan_rieng_kw
+         15     OLS         301               67          0.197538          67                     0.197538
+         15      RF         301               67          0.188311          67                     0.188311
+         20     OLS         331               68          0.199910          67                     0.197985
+         20      RF         331               68          0.183718          67                     0.181332
+         25     OLS         331               68          0.199910          67                     0.197985
+         25      RF         331               68          0.183718          67                     0.181332
+Running: cap_nhat_dashboard.py
+Dashboard synchronized: 25 CSV
+Completed all steps.

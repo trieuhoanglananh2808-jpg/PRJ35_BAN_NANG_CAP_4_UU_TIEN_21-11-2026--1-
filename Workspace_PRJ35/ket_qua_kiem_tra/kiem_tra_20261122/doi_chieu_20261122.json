@@ -1,0 +1,232 @@
+[
+  {
+    "file": "bao_phu_van_hanh.csv",
+    "shape": [
+      4,
+      2
+    ],
+    "result": "match"
+  },
+  {
+    "file": "chat_luong_ban_dau.csv",
+    "shape": [
+      2,
+      10
+    ],
+    "result": "match"
+  },
+  {
+    "file": "chi_so_test.csv",
+    "shape": [
+      3,
+      10
+    ],
+    "result": "match"
+  },
+  {
+    "file": "chi_so_validation.csv",
+    "shape": [
+      3,
+      10
+    ],
+    "result": "match"
+  },
+  {
+    "file": "chu_ky_gio.csv",
+    "shape": [
+      48,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "chu_ky_thang.csv",
+    "shape": [
+      24,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "chu_ky_thu.csv",
+    "shape": [
+      14,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "co_cau.csv",
+    "shape": [
+      8,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "coverage_by_month.csv",
+    "shape": [
+      19,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "dien_ngay.csv",
+    "shape": [
+      1442,
+      8
+    ],
+    "result": "match"
+  },
+  {
+    "file": "do_nhay_validation.csv",
+    "shape": [
+      6,
+      7
+    ],
+    "result": "match"
+  },
+  {
+    "file": "do_quan_trong_rf.csv",
+    "shape": [
+      7,
+      3
+    ],
+    "result": "match"
+  },
+  {
+    "file": "doi_chung.csv",
+    "shape": [
+      4,
+      3
+    ],
+    "result": "match"
+  },
+  {
+    "file": "du_bao_test.csv",
+    "shape": [
+      66,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "du_bao_validation.csv",
+    "shape": [
+      68,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "fallback_cung_ngay.csv",
+    "shape": [
+      6,
+      5
+    ],
+    "result": "match"
+  },
+  {
+    "file": "fallback_tong_hop.csv",
+    "shape": [
+      8,
+      8
+    ],
+    "result": "match"
+  },
+  {
+    "file": "fallback_tung_ngay.csv",
+    "shape": [
+      520,
+      7
+    ],
+    "result": "match"
+  },
+  {
+    "file": "he_so_ols.csv",
+    "shape": [
+      5,
+      3
+    ],
+    "result": "match"
+  },
+  {
+    "file": "hieu_nang.csv",
+    "shape": [
+      3,
+      4
+    ],
+    "result": "timing varies; schema matches"
+  },
+  {
+    "file": "kiem_tra_chat_luong_sub.csv",
+    "shape": [
+      3,
+      3
+    ],
+    "result": "match"
+  },
+  {
+    "file": "ma_tran.csv",
+    "shape": [
+      12,
+      8
+    ],
+    "result": "match"
+  },
+  {
+    "file": "phan_loai_so_0_va_loi.csv",
+    "shape": [
+      4,
+      4
+    ],
+    "result": "match"
+  },
+  {
+    "file": "thoi_tiet.csv",
+    "shape": [
+      10,
+      4
+    ],
+    "result": "match"
+  },
+  {
+    "file": "vi_du_lam_sach.csv",
+    "shape": [
+      30,
+      7
+    ],
+    "result": "match"
+  },
+  {
+    "split": "validation",
+    "model": "Baseline",
+    "mae": 0.22018703705882348
+  },
+  {
+    "split": "validation",
+    "model": "OLS",
+    "mae": 0.1999104732240694
+  },
+  {
+    "split": "validation",
+    "model": "Random Forest",
+    "mae": 0.18371809519717372
+  },
+  {
+    "split": "test",
+    "model": "Baseline",
+    "mae": 0.17949564287878783
+  },
+  {
+    "split": "test",
+    "model": "OLS",
+    "mae": 0.1550439493726459
+  },
+  {
+    "split": "test",
+    "model": "Random Forest",
+    "mae": 0.16980408901216756
+  }
+]

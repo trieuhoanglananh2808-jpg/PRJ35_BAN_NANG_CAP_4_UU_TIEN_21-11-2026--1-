@@ -1,0 +1,129 @@
+DASHBOARD NGHIÊN CỨU VÀ XỬ LÝ DỮ LIỆU — PRJ-35
+
+1. CẤU TRÚC DỰ ÁN
+04_DASHBOARD_NGHIEN_CUU/
+  app.py                   Giao diện Streamlit, 5 khu vực
+  processing.py            Hàm thống kê, xử lý và đối chiếu dùng chung
+  prepare_research.py      Tái lập từng trạng thái từ CSV thật của bài
+  requirements.txt         Phiên bản thư viện đã kiểm tra cho dashboard
+  requirements-lock.txt    Toàn bộ phụ thuộc của môi trường kiểm tra
+  CHAY_DASHBOARD.ps1       Lệnh mở app với môi trường ở LocalAppData
+  test_processing.py       Kiểm thử nghiệp vụ; dữ liệu kiểm thử không dùng trình chiếu
+  .streamlit/config.toml   Giao diện sáng, chạy cục bộ
+  evidence/                Parquet từng bước, manifest.json chứa thống kê toàn dữ liệu
+  HUONG_DAN.txt            Tài liệu này
+  kiem_tra/                Kết quả kiểm tra 15 màn hình–nhánh và nghiệp vụ
+
+Giữ thư mục này cạnh 02_MÃ_NGUỒN_CODE trong Workspace_PRJ35.
+Không cần cơ sở dữ liệu, Node.js hoặc tài khoản dịch vụ.
+Dashboard HTML ở 03_DASHBOARD_TRỰC_QUAN vẫn phục vụ đánh giá mô hình Chương 4.
+Ứng dụng mới tập trung trước–sau tiền xử lý, không thay kết quả nghiên cứu đã báo cáo.
+
+2. CÀI ĐẶT TRONG VS CODE / POWERSHELL
+Mở folder 04_DASHBOARD_NGHIEN_CUU bằng VS Code, mở Terminal.
+Yêu cầu Python 3.12, khuyến nghị tạo môi trường riêng ở đường dẫn không dấu:
+
+  $prjEnv = Join-Path $env:LOCALAPPDATA 'PRJ35_Streamlit_venv'
+  py -3.12 -m venv $prjEnv
+  $prjPython = Join-Path $prjEnv 'Scripts/python.exe'
+  & $prjPython -m pip install -r requirements.txt
+  & $prjPython -m pip check
+
+Nếu dùng terminal đã kích hoạt một môi trường riêng:
+  python -m pip install -r requirements.txt
+
+Các phiên bản này dành riêng dashboard mới, không sửa requirements của mô hình cũ.
+evidence/ được bàn giao cùng ứng dụng. Khi dữ liệu nguồn thay đổi hoặc cần tái lập:
+  & $prjPython prepare_research.py
+
+Script đọc đầy đủ CSV1 (2.075.259 dòng), CSV2 (34.608 dòng), tính nhiều trạng thái.
+Có thể mất vài phút, dùng vài GB RAM. Không ghi đè dữ liệu trong 02_MÃ_NGUỒN_CODE.
+Nếu script lỗi đối chiếu, dừng kiểm tra nguồn, không bỏ assert để tạo kết quả đẹp.
+
+3. KHỞI CHẠY
+  & $prjPython -m streamlit run app.py
+Hoặc:
+  python -m streamlit run app.py
+
+Mở http://localhost:8501. Dừng bằng Ctrl+C trong terminal.
+Không dùng lệnh python app.py để chạy giao diện.
+
+4. HƯỚNG DẪN 5 PHẦN
+Nguồn mặc định: Tiểu luận PRJ-35. Chọn một trong ba nhánh:
+- Điện EDA: 7 biến điện, chuẩn hóa chuỗi, ngưỡng B1, lịch phút, nội suy thời gian,
+  điền biên. Có dùng thông tin hai phía; không dùng nhánh này làm nhãn dự báo.
+- Điện dự báo: chỉ Date, Time, công suất tổng; chuẩn hóa, ngưỡng 0–11 kW,
+  lịch phút, điền tiến TRONG NGÀY. Có thể còn thiếu đầu ngày.
+- Thời tiết: chuyển số, khôi phục giờ, ffill 4 biến, mưa thiếu về 0, giới hạn miền.
+
+Phần 1: KPI, kiểu dữ liệu, số cột, bảng 20 dòng nguồn và kiểm tra thời gian.
+Phần 2: thiếu theo cột, heatmap (400 dòng/30 cột đầu có ghi rõ), trùng hoàn toàn,
+  IQR, phân bố, mô tả, chuỗi thời gian tổng hợp ngày.
+Phần 3: timeline bước đã thực hiện, lý do/đánh đổi, số ô và dòng đổi,
+  dữ liệu trước/sau bước, ví dụ tối đa 30 thay đổi, xuất nhật ký.
+Phần 4: gốc–cuối hoặc từng bước; bảng chỉ tiêu, cột ghép, thiếu trước/sau,
+  histogram cùng bin/trục, boxplot, phân bố tích lũy, chuỗi thời gian cùng trục,
+  thống kê biến chọn và xuất bảng CSV.
+Phần 5: kết quả thực, mức dịch chuyển thống kê, hạn chế, xuất nhật ký và dữ liệu.
+  Bấm Chuẩn bị CSV rồi Tải dữ liệu. CSV1 lớn cần thời gian và RAM để xuất.
+
+5. TỆP TẢI LÊN VÀ PHƯƠNG PHÁP TÙY CHỌN
+Chọn nguồn Tệp CSV/Excel tải lên. Không giả định tên cột.
+- CSV: chọn dấu phân cách, mã hóa, số dòng metadata cần bỏ.
+- Excel .xlsx: chọn chỉ số sheet từ 0; nếu cần .xls hãy lưu lại thành .xlsx.
+- Giữ chuỗi gốc để không tự suy đoán hoặc làm mất mã định danh có số 0 đầu.
+- Hạn mức thử nghiệm: 50 MiB/tệp, 200.000 dòng và 12 bước để tránh đầy RAM.
+  Nếu vượt mức sẽ báo rõ và dừng, không âm thầm lấy mẫu. PRJ-35 tích hợp dùng toàn dữ liệu.
+- Phần 3: chọn phương pháp, các cột, lý do, xác nhận đánh đổi rồi Áp dụng.
+  Chuyển thành số trước khi chọn mean/median. Ngày giờ cần định dạng rõ.
+- Nếu dữ liệu có train/test: giữ ô bảo vệ, chọn cột chia tập và nhãn train.
+  Mean, median, ngưỡng IQR chỉ học trên train; điền tiến tách từng tập.
+  Không dùng chế độ phân tích toàn bộ để huấn luyện tiền xử lý cho mô hình.
+- Điền tiến dùng thứ tự hiện tại; kiểm tra thời gian trước khi áp dụng.
+- Loại trùng chỉ loại hàng giống hoàn toàn, không tự loại trùng timestamp.
+- Có Hoàn tác bước cuối; bản gốc không đổi. Thử nghiệm chưa trở thành kết quả tiểu luận.
+
+6. CÁCH HIỂU SỐ LIỆU
+- Thiếu: NaN/NaT + mã rỗng, ?, null, NULL, None, N/A, -. Bảng gốc giữ mã nguồn.
+- Không đọc thành số: không nhất thiết là lỗi ở biến văn bản; chỉ xét nếu biến kỳ vọng số.
+- IQR dùng số đọc trực tiếp ở trạng thái gốc, giữ ngưỡng cố định khi so sánh.
+  Điểm ngoài IQR chỉ cần kiểm tra, không mặc nhiên sai. Số hiển thị là Ô, không phải dòng.
+- KPI tính trên toàn dữ liệu. Histogram dùng toàn bộ số hữu hạn và bin chung;
+  boxplot dùng phân vị/râu đầy đủ, trục chung theo râu của cả hai trạng thái;
+  điểm ngoài râu không vẽ nhưng không xóa, min/max đầy đủ vẫn ở bảng thống kê;
+  ECDF hiển thị tối đa 1.000 vị trí phân vị. Chuỗi thời gian dùng trung bình ngày.
+- Dòng gốc được định danh bằng index từ 0; bảng ví dụ trình bày vị trí từ 1, không gồm header.
+- Ô thay đổi tính trên cột chung và dòng còn lại, NaN–NaN không tính; thêm cột báo riêng.
+- Date/Time/time thô giữ để truy vết, nên vẫn có mã thiếu sau khi datetime khôi phục.
+  Không kết luận phép khôi phục lịch đã sửa được toàn bộ dữ liệu nguồn.
+- Chuẩn hóa chuỗi và đặt số ngoài ngưỡng thành NaN có thể làm số thiếu TĂNG;
+  điền làm đầy đủ hơn nhưng có thể làm phẳng phân bố hoặc đưa giả định sai vào dữ liệu.
+- B1 tái lập gần khớp bảng điện bàn giao (rtol=atol=1e-6), không đồng nhất bit.
+  Nhánh thời tiết đối chiếu bảng sạch. Mốc lịch suy ra và nguồn đo chưa xác minh độc lập.
+- Phần sidebar kiểm tra khóa phút–giờ trên Parquet bàn giao, không tuyên bố đã chạy lại ML.
+
+7. CÁC HÀM CHÍNH (DỄ CHỈNH SỬA)
+processing.py:
+  missing_mask: nhận diện ô thiếu theo mã quy ước.
+  numeric: đọc số trực tiếp, không tự tách đơn vị trong dữ liệu tùy ý.
+  bounds_for/profile: tính ngưỡng IQR và thống kê đầy đủ.
+  change_summary: đối chiếu giá trị theo index gốc, đếm dòng loại và lấy ví dụ.
+  apply_step: tạo DataFrame mới cho mỗi thao tác; học tham số theo train được chọn.
+  time_audit/read_upload: kiểm tra thời gian và đọc CSV/Excel không đoán tên cột.
+prepare_research.py:
+  save_step: lưu Parquet, profile, ví dụ thay đổi và căn cứ chương/mục.
+  prepare: tái lập ba nhánh từ dữ liệu thật, đối chiếu với bảng sạch bàn giao.
+app.py:
+  overview/before_view/pipeline/comparison/assessment: tương ứng 5 khu vực.
+  compare_charts: thống nhất bin, trục và màu cam/xanh.
+  editor: thao tác có lựa chọn và lưu trạng thái trong phiên Streamlit.
+
+8. KIỂM TRA
+  & $prjPython -m unittest test_processing.py
+Thử thay đổi trung vị bằng một tệp có nhãn train/test; kiểm tra tham số không dùng test.
+Những số liệu tổng hợp trong test_processing.py CHỈ dùng kiểm thử, không làm minh chứng bài.
+
+Tài liệu API tham khảo khi phát triển giao diện:
+https://docs.streamlit.io/develop/api-reference/data/st.dataframe
+https://docs.streamlit.io/develop/api-reference/execution-flow/st.form
+Số liệu nghiên cứu và quy tắc chuyên môn lấy từ tiểu luận/mã nguồn trong gói (1).

@@ -1,0 +1,51 @@
+{
+  "views": [
+    {
+      "view": 8,
+      "title": "Chất lượng dữ liệu ban đầu",
+      "charts": 0
+    },
+    {
+      "view": 0,
+      "title": "Tiêu thụ điện theo thời gian",
+      "charts": 4
+    },
+    {
+      "view": 1,
+      "title": "Chất lượng và liên hệ với thời tiết",
+      "charts": 4
+    },
+    {
+      "view": 2,
+      "title": "Ma trận tương quan Pearson",
+      "charts": 2
+    },
+    {
+      "view": 3,
+      "title": "Phân bố điện năng theo thứ",
+      "charts": 2
+    },
+    {
+      "view": 4,
+      "title": "Đối chứng nhiệt độ quá khứ",
+      "charts": 1
+    },
+    {
+      "view": 5,
+      "title": "So sánh mô hình trên validation",
+      "charts": 4
+    },
+    {
+      "view": 6,
+      "title": "Sai số và chi phí trên test",
+      "charts": 4
+    },
+    {
+      "view": 7,
+      "title": "Diễn giải mô hình",
+      "charts": 2
+    }
+  ],
+  "errors": [],
+  "csv_upload_restore": true
+}

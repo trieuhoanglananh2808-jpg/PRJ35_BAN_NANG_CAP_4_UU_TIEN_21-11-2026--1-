@@ -1,0 +1,159 @@
+{
+  "clean_environment_run": true,
+  "original_main_code_unchanged": true,
+  "validation_metrics": [
+    {
+      "phuong_phap": "Baseline",
+      "so_ngay": 68,
+      "MAE_kw": 0.2201870381832122,
+      "RMSE_kw": 0.2772054076194763,
+      "R2": 0.4894219636917114,
+      "MAPE_pct": 24.382709503173828,
+      "so_ngay_MAPE": 68,
+      "MAE_kwh_ngay": 5.284488677978516,
+      "giam_MAE_pct": 0.0,
+      "giam_RMSE_pct": 0.0
+    },
+    {
+      "phuong_phap": "OLS",
+      "so_ngay": 68,
+      "MAE_kw": 0.1999104716139395,
+      "RMSE_kw": 0.2583911021068704,
+      "R2": 0.556377193541669,
+      "MAPE_pct": 20.54400754318431,
+      "so_ngay_MAPE": 68,
+      "MAE_kwh_ngay": 4.7978513187345495,
+      "giam_MAE_pct": 9.20879209629093,
+      "giam_RMSE_pct": 6.787135097462649
+    },
+    {
+      "phuong_phap": "Random Forest",
+      "so_ngay": 68,
+      "MAE_kw": 0.18371809463046,
+      "RMSE_kw": 0.2336218543540857,
+      "R2": 0.6373516633184836,
+      "MAPE_pct": 20.69108799508499,
+      "so_ngay_MAPE": 68,
+      "MAE_kwh_ngay": 4.409234271131041,
+      "giam_MAE_pct": 16.56271134471018,
+      "giam_RMSE_pct": 15.722475849106942
+    }
+  ],
+  "test_metrics": [
+    {
+      "phuong_phap": "Baseline",
+      "so_ngay": 66,
+      "MAE_kw": 0.179495632648468,
+      "RMSE_kw": 0.2372022867202758,
+      "R2": 0.4260674118995666,
+      "MAPE_pct": 24.70865821838379,
+      "so_ngay_MAPE": 66,
+      "MAE_kwh_ngay": 4.307895183563232,
+      "giam_MAE_pct": 0.0,
+      "giam_RMSE_pct": 0.0
+    },
+    {
+      "phuong_phap": "OLS",
+      "so_ngay": 66,
+      "MAE_kw": 0.1550439444182569,
+      "RMSE_kw": 0.2079923391516129,
+      "R2": 0.5587163224619888,
+      "MAPE_pct": 18.810285118093343,
+      "so_ngay_MAPE": 66,
+      "MAE_kwh_ngay": 3.721054666038168,
+      "giam_MAE_pct": 13.622441877512582,
+      "giam_RMSE_pct": 12.314361708961574
+    },
+    {
+      "phuong_phap": "Random Forest",
+      "so_ngay": 66,
+      "MAE_kw": 0.1698040831158397,
+      "RMSE_kw": 0.212190732330035,
+      "R2": 0.5407216127711185,
+      "MAPE_pct": 20.70037996291064,
+      "so_ngay_MAPE": 66,
+      "MAE_kwh_ngay": 4.075297994780152,
+      "giam_MAE_pct": 5.39932330922428,
+      "giam_RMSE_pct": 10.544398511527042
+    }
+  ],
+  "test_fallback": {
+    "calendar": 289,
+    "RF": 83,
+    "fallback": 160,
+    "stop": 46,
+    "scoreable": 205
+  },
+  "validation_fallback": {
+    "calendar": 231,
+    "RF": 81,
+    "fallback": 118,
+    "stop": 32,
+    "scoreable": 167
+  },
+  "dashboard_matches_csv": true,
+  "csv_count": 25,
+  "browser": {
+    "views": [
+      {
+        "view": 8,
+        "title": "Chất lượng dữ liệu ban đầu",
+        "charts": 0
+      },
+      {
+        "view": 0,
+        "title": "Tiêu thụ điện theo thời gian",
+        "charts": 4
+      },
+      {
+        "view": 1,
+        "title": "Chất lượng và liên hệ với thời tiết",
+        "charts": 4
+      },
+      {
+        "view": 2,
+        "title": "Ma trận tương quan Pearson",
+        "charts": 2
+      },
+      {
+        "view": 3,
+        "title": "Phân bố điện năng theo thứ",
+        "charts": 2
+      },
+      {
+        "view": 4,
+        "title": "Đối chứng nhiệt độ quá khứ",
+        "charts": 1
+      },
+      {
+        "view": 5,
+        "title": "So sánh mô hình trên validation",
+        "charts": 4
+      },
+      {
+        "view": 6,
+        "title": "Sai số và chi phí trên test",
+        "charts": 4
+      },
+      {
+        "view": 7,
+        "title": "Diễn giải mô hình",
+        "charts": 2
+      }
+    ],
+    "errors": [],
+    "csv_upload_restore": true
+  },
+  "equations": 47,
+  "images": 8,
+  "tables": 31,
+  "pdf_pages": 62,
+  "pdf_A4": true,
+  "sources_checked_online": [
+    "https://www.mdpi.com/1996-1073/11/12/3520",
+    "https://www.mdpi.com/1996-1073/14/10/2737",
+    "https://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm",
+    "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_rel.html"
+  ],
+  "source_review_limit": "APA structure and selected primary sources checked; not a complete independent verification of every historical claim."
+}

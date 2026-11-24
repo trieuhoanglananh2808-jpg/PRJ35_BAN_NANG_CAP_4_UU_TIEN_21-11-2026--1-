@@ -1,0 +1,31 @@
+﻿dong_du_lieu_1_based,cot,phan_loai,gia_tri_goc,sau_chuan_hoa,gia_tri_EDA,cong_suat_du_bao_kw
+3,Global_active_power,Khong doc duoc,-,,4.9973335,4.216000080108643
+13,Global_active_power,Khong doc duoc,None,,5.34,5.4120001792907715
+2,Global_active_power,Ngoai nguong thu,9999,9999.0,4.6066666,4.216000080108643
+16,Global_active_power,Ngoai nguong thu,9999,9999.0,3.662,4.053999900817871
+8,Global_active_power,Chuan hoa chuoi,"3,700 USD",3.7,3.7,3.700000047683716
+39,Global_active_power,Chuan hoa chuoi,"2,772 kg",2.772,2.772,2.7720000743865967
+1,Sub_metering_1,0 hop le,0.000,0.0,0.0,
+2,Sub_metering_1,0 hop le,0.000,0.0,0.0,
+3,Sub_metering_1,Khong doc duoc,N/A,,0.0,
+9,Sub_metering_1,Khong doc duoc,?,,0.0,
+19,Sub_metering_1,Ngoai nguong thu,9999,9999.0,0.0,
+21,Sub_metering_1,Ngoai nguong thu,9999,9999.0,0.0,
+7,Sub_metering_1,Chuan hoa chuoi,0.000 đ,0.0,0.0,
+8,Sub_metering_1,Chuan hoa chuoi,"0,000 VND",0.0,0.0,
+16,Sub_metering_2,0 hop le,0.000,0.0,0.0,
+17,Sub_metering_2,0 hop le,0.0,0.0,0.0,
+3,Sub_metering_2,Khong doc duoc,-,,1.0,
+6,Sub_metering_2,Khong doc duoc,N/A,,1.0,
+20,Sub_metering_2,Ngoai nguong thu,-1,-1.0,0.0,
+31,Sub_metering_2,Ngoai nguong thu,-1,-1.0,0.0,
+8,Sub_metering_2,Chuan hoa chuoi,1.000 VND,1.0,1.0,
+23,Sub_metering_2,Chuan hoa chuoi,"0,000 USD",0.0,0.0,
+293,Sub_metering_3,0 hop le,0.000,0.0,0.0,
+294,Sub_metering_3,0 hop le,0.000,0.0,0.0,
+1,Sub_metering_3,Khong doc duoc,null,,16.0,
+6,Sub_metering_3,Khong doc duoc,?,,17.0,
+13,Sub_metering_3,Ngoai nguong thu,-16.0,-16.0,17.0,
+17,Sub_metering_3,Ngoai nguong thu,9999,9999.0,17.0,
+5,Sub_metering_3,Chuan hoa chuoi,17.000 %,17.0,17.0,
+29,Sub_metering_3,Chuan hoa chuoi,17.000 kg,17.0,17.0,

@@ -1,0 +1,4274 @@
+{
+  "sources": {
+    "26_2521001040_Triệu Hoàng Lan Anh_CSV1.csv": "332aa410ddf325b89713d590abd956bcc9169d07fac4bb9cfe652d5738dde17b",
+    "26_2521001040_Triệu Hoàng Lan Anh_CSV2.csv": "e696237ea42e4628fcef01399a4aca15c2275891cfa378508a009bbb01d1d2b0"
+  },
+  "branches": {
+    "Điện — EDA (7 biến)": {
+      "stages": [
+        {
+          "name": "Gốc CSV1",
+          "file": "power_eda\\00.parquet",
+          "method": "Chỉ đọc, không sửa",
+          "reason": "Giữ nguyên nội dung và thứ tự dòng gốc.",
+          "reference": "3.1; B1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 9,
+            "missing": 3099094,
+            "missing_pct": 16.592809754241653,
+            "duplicates": 393,
+            "outliers": 984730,
+            "nan": 0,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "str",
+                "Thiếu": 195114,
+                "Thiếu (%)": 9.401910797640198,
+                "Số đọc trực tiếp": 1756335,
+                "Không đọc thành số": 123810,
+                "Ô ngoài IQR": 124074,
+                "Count": 1756335,
+                "Mean": 181.52910283402656,
+                "Median": 0.628,
+                "Std": 1519.9267379643193,
+                "Min": -100.0,
+                "Q1": 0.304,
+                "Q3": 1.586,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Global_reactive_power",
+                "Kiểu": "str",
+                "Thiếu": 126119,
+                "Thiếu (%)": 6.077265536494481,
+                "Số đọc trực tiếp": 1760300,
+                "Không đọc thành số": 188840,
+                "Ô ngoài IQR": 84836,
+                "Count": 1760300,
+                "Mean": 108.25107892404704,
+                "Median": 0.1,
+                "Std": 1304.5282785523395,
+                "Min": -100.0,
+                "Q1": 0.046,
+                "Q3": 0.2,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Voltage",
+                "Kiểu": "str",
+                "Thiếu": 431053,
+                "Thiếu (%)": 20.771045927279438,
+                "Số đọc trực tiếp": 1525241,
+                "Không đọc thành số": 118965,
+                "Ô ngoài IQR": 187511,
+                "Count": 1525241,
+                "Mean": 2225.890961395609,
+                "Median": 241.06,
+                "Std": 18474.222732735936,
+                "Min": -252.36,
+                "Q1": 238.71,
+                "Q3": 243.25,
+                "Max": 252120.0
+              },
+              {
+                "Biến": "Global_intensity",
+                "Kiểu": "str",
+                "Thiếu": 199626,
+                "Thiếu (%)": 9.619329442734617,
+                "Số đọc trực tiếp": 1714833,
+                "Không đọc thành số": 160800,
+                "Ô ngoài IQR": 118037,
+                "Count": 1714833,
+                "Mean": 193.77386882571076,
+                "Median": 2.6,
+                "Std": 1451.0205832172735,
+                "Min": -100.0,
+                "Q1": 1.4,
+                "Q3": 6.6,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Sub_metering_1",
+                "Kiểu": "str",
+                "Thiếu": 556957,
+                "Thiếu (%)": 26.837951311137548,
+                "Số đọc trực tiếp": 1377134,
+                "Không đọc thành số": 141168,
+                "Ô ngoài IQR": 279274,
+                "Count": 1377134,
+                "Mean": 663.9099230721193,
+                "Median": 0.0,
+                "Std": 2568.5937505282936,
+                "Min": -100.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Sub_metering_2",
+                "Kiểu": "str",
+                "Thiếu": 334344,
+                "Thiếu (%)": 16.11095289792744,
+                "Số đọc trực tiếp": 1549927,
+                "Không đọc thành số": 190988,
+                "Ô ngoài IQR": 115354,
+                "Count": 1549927,
+                "Mean": 357.2872999825153,
+                "Median": 0.0,
+                "Std": 2045.3558744114107,
+                "Min": -100.0,
+                "Q1": 0.0,
+                "Q3": 1.0,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Sub_metering_3",
+                "Kiểu": "str",
+                "Thiếu": 415702,
+                "Thiếu (%)": 20.03133102904264,
+                "Số đọc trực tiếp": 1491773,
+                "Không đọc thành số": 167784,
+                "Ô ngoài IQR": 75644,
+                "Count": 1491773,
+                "Mean": 484.8735685657268,
+                "Median": 1.0,
+                "Std": 2263.507048558403,
+                "Min": -100.0,
+                "Q1": 0.0,
+                "Q3": 18.0,
+                "Max": 100000.0
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          }
+        },
+        {
+          "name": "Chuẩn hóa chuỗi số",
+          "file": "power_eda\\01.parquet",
+          "method": "Bỏ ký tự ngoài số/dấu; đổi dấu phẩy thành chấm; errors=coerce",
+          "reason": "Tái lập quy tắc B1. Chuỗi lẫn đơn vị được chuẩn hóa là giả định; không xác nhận số đo đúng.",
+          "reference": "3.3; B1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 9,
+            "missing": 3112717,
+            "missing_pct": 16.665748441252127,
+            "duplicates": 3234,
+            "outliers": 1019659,
+            "nan": 2272538,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 196665,
+                "Thiếu (%)": 9.476648456891406,
+                "Số đọc trực tiếp": 1878594,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 128947,
+                "Count": 1878594,
+                "Mean": 169.78599934099654,
+                "Median": 0.626,
+                "Std": 1470.3101214011424,
+                "Min": -100.0,
+                "Q1": 0.304,
+                "Q3": 1.582,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Global_reactive_power",
+                "Kiểu": "float64",
+                "Thiếu": 128488,
+                "Thiếu (%)": 6.1914199625203405,
+                "Số đọc trực tiếp": 1946771,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 87819,
+                "Count": 1946771,
+                "Mean": 97.89408037308958,
+                "Median": 0.1,
+                "Std": 1240.8870299491193,
+                "Min": -100.0,
+                "Q1": 0.046,
+                "Q3": 0.198,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Voltage",
+                "Kiểu": "float64",
+                "Thiếu": 432568,
+                "Thiếu (%)": 20.844048863298507,
+                "Số đọc trực tiếp": 1642691,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 188732,
+                "Count": 1642691,
+                "Mean": 2083.9627566535646,
+                "Median": 241.05,
+                "Std": 17808.881321276596,
+                "Min": -252.36,
+                "Q1": 238.73,
+                "Q3": 243.22,
+                "Max": 252120.0
+              },
+              {
+                "Biến": "Global_intensity",
+                "Kiểu": "float64",
+                "Thiếu": 201572,
+                "Thiếu (%)": 9.713100870782876,
+                "Số đọc trực tiếp": 1873687,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 125341,
+                "Count": 1873687,
+                "Mean": 177.7375067447231,
+                "Median": 2.6,
+                "Std": 1389.1487622868435,
+                "Min": -100.0,
+                "Q1": 1.4,
+                "Q3": 6.6,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Sub_metering_1",
+                "Kiểu": "float64",
+                "Thiếu": 558722,
+                "Thiếu (%)": 26.923000936268675,
+                "Số đọc trực tiếp": 1516537,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 290806,
+                "Count": 1516537,
+                "Mean": 602.9860603466977,
+                "Median": 0.0,
+                "Std": 2455.1727814803817,
+                "Min": -100.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Sub_metering_2",
+                "Kiểu": "float64",
+                "Thiếu": 336699,
+                "Thiếu (%)": 16.224432709363022,
+                "Số đọc trực tiếp": 1738560,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 122370,
+                "Count": 1738560,
+                "Mean": 318.660860137125,
+                "Median": 0.0,
+                "Std": 1934.3829462013916,
+                "Min": -100.0,
+                "Q1": 0.0,
+                "Q3": 1.0,
+                "Max": 100000.0
+              },
+              {
+                "Biến": "Sub_metering_3",
+                "Kiểu": "float64",
+                "Thiếu": 417824,
+                "Thiếu (%)": 20.133583326225786,
+                "Số đọc trực tiếp": 1657435,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 75644,
+                "Count": 1657435,
+                "Mean": 437.0568553216265,
+                "Median": 1.0,
+                "Std": 2152.2001983188006,
+                "Min": -100.0,
+                "Q1": 0.0,
+                "Q3": 18.0,
+                "Max": 100000.0
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 14526813,
+            "changed_rows": 2075259,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 1,
+                "Biến": "Global_active_power",
+                "Trước": "4.216",
+                "Sau": "4.216"
+              },
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "Global_active_power",
+                "Trước": "9999",
+                "Sau": "9999.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 3,
+                "Biến": "Global_active_power",
+                "Trước": "-",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 4,
+                "Biến": "Global_active_power",
+                "Trước": "5.388",
+                "Sau": "5.388"
+              },
+              {
+                "Dòng gốc (từ 1)": 5,
+                "Biến": "Global_active_power",
+                "Trước": "3.666",
+                "Sau": "3.666"
+              },
+              {
+                "Dòng gốc (từ 1)": 6,
+                "Biến": "Global_active_power",
+                "Trước": "3.520",
+                "Sau": "3.52"
+              },
+              {
+                "Dòng gốc (từ 1)": 7,
+                "Biến": "Global_active_power",
+                "Trước": "3.702",
+                "Sau": "3.702"
+              },
+              {
+                "Dòng gốc (từ 1)": 8,
+                "Biến": "Global_active_power",
+                "Trước": "3,700 USD",
+                "Sau": "3.7"
+              },
+              {
+                "Dòng gốc (từ 1)": 9,
+                "Biến": "Global_active_power",
+                "Trước": "3.668",
+                "Sau": "3.668"
+              },
+              {
+                "Dòng gốc (từ 1)": 10,
+                "Biến": "Global_active_power",
+                "Trước": "3.662",
+                "Sau": "3.662"
+              },
+              {
+                "Dòng gốc (từ 1)": 11,
+                "Biến": "Global_active_power",
+                "Trước": "4.448",
+                "Sau": "4.448"
+              },
+              {
+                "Dòng gốc (từ 1)": 12,
+                "Biến": "Global_active_power",
+                "Trước": "5.412",
+                "Sau": "5.412"
+              },
+              {
+                "Dòng gốc (từ 1)": 13,
+                "Biến": "Global_active_power",
+                "Trước": "None",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 14,
+                "Biến": "Global_active_power",
+                "Trước": "5.268",
+                "Sau": "5.268"
+              },
+              {
+                "Dòng gốc (từ 1)": 15,
+                "Biến": "Global_active_power",
+                "Trước": "4.054",
+                "Sau": "4.054"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "Global_active_power",
+                "Trước": "9999",
+                "Sau": "9999.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 17,
+                "Biến": "Global_active_power",
+                "Trước": "3.270",
+                "Sau": "3.27"
+              },
+              {
+                "Dòng gốc (từ 1)": 18,
+                "Biến": "Global_active_power",
+                "Trước": "3.430",
+                "Sau": "3.43"
+              },
+              {
+                "Dòng gốc (từ 1)": 19,
+                "Biến": "Global_active_power",
+                "Trước": "3.266",
+                "Sau": "3.266"
+              },
+              {
+                "Dòng gốc (từ 1)": 20,
+                "Biến": "Global_active_power",
+                "Trước": "N/A",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 21,
+                "Biến": "Global_active_power",
+                "Trước": "5.894",
+                "Sau": "5.894"
+              },
+              {
+                "Dòng gốc (từ 1)": 22,
+                "Biến": "Global_active_power",
+                "Trước": "7.706",
+                "Sau": "7.706"
+              },
+              {
+                "Dòng gốc (từ 1)": 23,
+                "Biến": "Global_active_power",
+                "Trước": "7.026",
+                "Sau": "7.026"
+              },
+              {
+                "Dòng gốc (từ 1)": 24,
+                "Biến": "Global_active_power",
+                "Trước": "-",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 25,
+                "Biến": "Global_active_power",
+                "Trước": "4.474",
+                "Sau": "4.474"
+              },
+              {
+                "Dòng gốc (từ 1)": 26,
+                "Biến": "Global_active_power",
+                "Trước": "3.248",
+                "Sau": "3.248"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "Global_active_power",
+                "Trước": "",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "Global_active_power",
+                "Trước": "9999",
+                "Sau": "9999.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 29,
+                "Biến": "Global_active_power",
+                "Trước": "3.258",
+                "Sau": "3.258"
+              },
+              {
+                "Dòng gốc (từ 1)": 30,
+                "Biến": "Global_active_power",
+                "Trước": "None",
+                "Sau": "nan"
+              }
+            ],
+            "filled_missing": 0,
+            "introduced_missing": 13623
+          }
+        },
+        {
+          "name": "Áp ngưỡng thử B1",
+          "file": "power_eda\\02.parquet",
+          "method": "Đưa số ngoài ngưỡng từng biến về NaN; không xóa dòng",
+          "reason": "Các ngưỡng kế thừa B1, không dùng IQR để tự động loại điểm và không chứng nhận giới hạn thiết bị.",
+          "reference": "3.3; 3.7",
+          "profile": {
+            "rows": 2075259,
+            "cols": 9,
+            "missing": 3949632,
+            "missing_pct": 21.1466616937934,
+            "duplicates": 5353,
+            "outliers": 380647,
+            "nan": 3109453,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 287240,
+                "Thiếu (%)": 13.841163922189953,
+                "Số đọc trực tiếp": 1788019,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 74760,
+                "Count": 1788019,
+                "Mean": 1.0999391751429934,
+                "Median": 0.608,
+                "Std": 1.0732886810548496,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.534,
+                "Max": 11.0
+              },
+              {
+                "Biến": "Global_reactive_power",
+                "Kiểu": "float64",
+                "Thiếu": 185309,
+                "Thiếu (%)": 8.929439650665289,
+                "Số đọc trực tiếp": 1889950,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 35088,
+                "Count": 1889950,
+                "Mean": 0.12540030794465465,
+                "Median": 0.1,
+                "Std": 0.12330677515172574,
+                "Min": 0.0,
+                "Q1": 0.048,
+                "Q3": 0.194,
+                "Max": 2.0
+              },
+              {
+                "Biến": "Voltage",
+                "Kiểu": "float64",
+                "Thiếu": 605754,
+                "Thiếu (%)": 29.18932046554189,
+                "Số đọc trực tiếp": 1469505,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 15546,
+                "Count": 1469505,
+                "Mean": 240.841286596507,
+                "Median": 241.01,
+                "Std": 3.241498702671385,
+                "Min": 223.2,
+                "Q1": 238.99,
+                "Q3": 242.89,
+                "Max": 253.94
+              },
+              {
+                "Biến": "Global_intensity",
+                "Kiểu": "float64",
+                "Thiếu": 276206,
+                "Thiếu (%)": 13.30947125154017,
+                "Số đọc trực tiếp": 1799053,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 83519,
+                "Count": 1799053,
+                "Mean": 4.6471687048686166,
+                "Median": 2.6,
+                "Std": 4.488042943248827,
+                "Min": 0.2,
+                "Q1": 1.4,
+                "Q3": 6.4,
+                "Max": 50.0
+              },
+              {
+                "Biến": "Sub_metering_1",
+                "Kiểu": "float64",
+                "Thiếu": 740417,
+                "Thiếu (%)": 35.67829364913006,
+                "Số đọc trực tiếp": 1334842,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 109111,
+                "Count": 1334842,
+                "Mean": 1.1116821316680177,
+                "Median": 0.0,
+                "Std": 6.122009034232164,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 88.0
+              },
+              {
+                "Biến": "Sub_metering_2",
+                "Kiểu": "float64",
+                "Thiếu": 451274,
+                "Thiếu (%)": 21.745430329419126,
+                "Số đọc trực tiếp": 1623985,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 62623,
+                "Count": 1623985,
+                "Mean": 1.2981357586430908,
+                "Median": 0.0,
+                "Std": 5.806095275735284,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 1.0,
+                "Max": 80.0
+              },
+              {
+                "Biến": "Sub_metering_3",
+                "Kiểu": "float64",
+                "Thiếu": 563253,
+                "Thiếu (%)": 27.141335129735616,
+                "Số đọc trực tiếp": 1512006,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 0,
+                "Count": 1512006,
+                "Mean": 6.422573058572519,
+                "Median": 1.0,
+                "Std": 8.424085301243876,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 17.0,
+                "Max": 31.0
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 836915,
+            "changed_rows": 707448,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 67,
+                "Biến": "Global_active_power",
+                "Trước": "293.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 97,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 109,
+                "Biến": "Global_active_power",
+                "Trước": "34.32",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 111,
+                "Biến": "Global_active_power",
+                "Trước": "33.92",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 122,
+                "Biến": "Global_active_power",
+                "Trước": "347.6",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 157,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 185,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 190,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 236,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 261,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 293,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 367,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 393,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 399,
+                "Biến": "Global_active_power",
+                "Trước": "-3.04",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 411,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 454,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 567,
+                "Biến": "Global_active_power",
+                "Trước": "-2.33",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 607,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 627,
+                "Biến": "Global_active_power",
+                "Trước": "754.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 642,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 665,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 683,
+                "Biến": "Global_active_power",
+                "Trước": "317.4",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 701,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 710,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 746,
+                "Biến": "Global_active_power",
+                "Trước": "226.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 765,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 768,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              }
+            ],
+            "filled_missing": 0,
+            "introduced_missing": 836915
+          }
+        },
+        {
+          "name": "Khôi phục lịch phút",
+          "file": "power_eda\\03.parquet",
+          "method": "Tạo lịch đều sau khi đối chiếu mọi mốc đọc được",
+          "reason": "757566 mốc không đọc được được suy ra theo vị trí. Date/Time thô giữ nguyên để truy vết; lịch suy ra chưa xác minh độc lập.",
+          "reference": "3.2–3.3; B1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 10,
+            "missing": 3949632,
+            "missing_pct": 19.03199552441406,
+            "duplicates": 0,
+            "outliers": 380647,
+            "nan": 3109453,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 287240,
+                "Thiếu (%)": 13.841163922189953,
+                "Số đọc trực tiếp": 1788019,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 74760,
+                "Count": 1788019,
+                "Mean": 1.0999391751429934,
+                "Median": 0.608,
+                "Std": 1.0732886810548496,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.534,
+                "Max": 11.0
+              },
+              {
+                "Biến": "Global_reactive_power",
+                "Kiểu": "float64",
+                "Thiếu": 185309,
+                "Thiếu (%)": 8.929439650665289,
+                "Số đọc trực tiếp": 1889950,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 35088,
+                "Count": 1889950,
+                "Mean": 0.12540030794465465,
+                "Median": 0.1,
+                "Std": 0.12330677515172574,
+                "Min": 0.0,
+                "Q1": 0.048,
+                "Q3": 0.194,
+                "Max": 2.0
+              },
+              {
+                "Biến": "Voltage",
+                "Kiểu": "float64",
+                "Thiếu": 605754,
+                "Thiếu (%)": 29.18932046554189,
+                "Số đọc trực tiếp": 1469505,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 15546,
+                "Count": 1469505,
+                "Mean": 240.841286596507,
+                "Median": 241.01,
+                "Std": 3.241498702671385,
+                "Min": 223.2,
+                "Q1": 238.99,
+                "Q3": 242.89,
+                "Max": 253.94
+              },
+              {
+                "Biến": "Global_intensity",
+                "Kiểu": "float64",
+                "Thiếu": 276206,
+                "Thiếu (%)": 13.30947125154017,
+                "Số đọc trực tiếp": 1799053,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 83519,
+                "Count": 1799053,
+                "Mean": 4.6471687048686166,
+                "Median": 2.6,
+                "Std": 4.488042943248827,
+                "Min": 0.2,
+                "Q1": 1.4,
+                "Q3": 6.4,
+                "Max": 50.0
+              },
+              {
+                "Biến": "Sub_metering_1",
+                "Kiểu": "float64",
+                "Thiếu": 740417,
+                "Thiếu (%)": 35.67829364913006,
+                "Số đọc trực tiếp": 1334842,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 109111,
+                "Count": 1334842,
+                "Mean": 1.1116821316680177,
+                "Median": 0.0,
+                "Std": 6.122009034232164,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 88.0
+              },
+              {
+                "Biến": "Sub_metering_2",
+                "Kiểu": "float64",
+                "Thiếu": 451274,
+                "Thiếu (%)": 21.745430329419126,
+                "Số đọc trực tiếp": 1623985,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 62623,
+                "Count": 1623985,
+                "Mean": 1.2981357586430908,
+                "Median": 0.0,
+                "Std": 5.806095275735284,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 1.0,
+                "Max": 80.0
+              },
+              {
+                "Biến": "Sub_metering_3",
+                "Kiểu": "float64",
+                "Thiếu": 563253,
+                "Thiếu (%)": 27.141335129735616,
+                "Số đọc trực tiếp": 1512006,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 0,
+                "Count": 1512006,
+                "Mean": 6.422573058572519,
+                "Median": 1.0,
+                "Std": 8.424085301243876,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 17.0,
+                "Max": 31.0
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 2075259,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [
+              "datetime"
+            ],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 17:24:00",
+            "Cuối": "2010-11-26 21:02:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        },
+        {
+          "name": "Nội suy thời gian — EDA",
+          "file": "power_eda\\04.parquet",
+          "method": "interpolate(method=\"time\") cho 7 biến điện",
+          "reason": "Khôi phục chuỗi mô tả; dùng thông tin hai phía nên không dùng nhánh này để dự báo tương lai.",
+          "reference": "3.3.3; B1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 10,
+            "missing": 840180,
+            "missing_pct": 4.048554903267496,
+            "duplicates": 0,
+            "outliers": 496390,
+            "nan": 1,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 85129,
+                "Count": 2075259,
+                "Mean": 1.1009083637271297,
+                "Median": 0.632,
+                "Std": 1.065798972509721,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.538,
+                "Max": 11.0
+              },
+              {
+                "Biến": "Global_reactive_power",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 38156,
+                "Count": 2075259,
+                "Mean": 0.12583239296878124,
+                "Median": 0.1,
+                "Std": 0.12227923876369727,
+                "Min": 0.0,
+                "Q1": 0.048,
+                "Q3": 0.194,
+                "Max": 2.0
+              },
+              {
+                "Biến": "Voltage",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 21144,
+                "Count": 2075259,
+                "Mean": 240.83330426226317,
+                "Median": 241.0,
+                "Std": 3.2317385267443686,
+                "Min": 223.2,
+                "Q1": 238.99,
+                "Q3": 242.865,
+                "Max": 253.94
+              },
+              {
+                "Biến": "Global_intensity",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 94377,
+                "Count": 2075259,
+                "Mean": 4.6456939109768935,
+                "Median": 2.8,
+                "Std": 4.457043506312702,
+                "Min": 0.2,
+                "Q1": 1.4,
+                "Q3": 6.4,
+                "Max": 50.0
+              },
+              {
+                "Biến": "Sub_metering_1",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 176447,
+                "Count": 2075259,
+                "Mean": 1.1103842942013502,
+                "Median": 0.0,
+                "Std": 5.989925019111468,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 88.0
+              },
+              {
+                "Biến": "Sub_metering_2",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 81137,
+                "Count": 2075259,
+                "Mean": 1.3073445290443264,
+                "Median": 0.0,
+                "Std": 5.778853338256126,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 1.0,
+                "Max": 80.0
+              },
+              {
+                "Biến": "Sub_metering_3",
+                "Kiểu": "float64",
+                "Thiếu": 1,
+                "Thiếu (%)": 4.818675644823128e-05,
+                "Số đọc trực tiếp": 2075258,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 0,
+                "Count": 2075258,
+                "Mean": 6.452139926698271,
+                "Median": 1.0,
+                "Std": 8.395041416326105,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 17.0,
+                "Max": 31.0
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 2075259,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 3109452,
+            "changed_rows": 1679638,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.6066666666666665"
+              },
+              {
+                "Dòng gốc (từ 1)": 3,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.997333333333334"
+              },
+              {
+                "Dòng gốc (từ 1)": 13,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "5.34"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.662"
+              },
+              {
+                "Dòng gốc (từ 1)": 20,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.58"
+              },
+              {
+                "Dòng gốc (từ 1)": 24,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "5.75"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.2513333333333336"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.2546666666666666"
+              },
+              {
+                "Dòng gốc (từ 1)": 30,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.989"
+              },
+              {
+                "Dòng gốc (từ 1)": 32,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.5309999999999997"
+              },
+              {
+                "Dòng gốc (từ 1)": 57,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.896"
+              },
+              {
+                "Dòng gốc (từ 1)": 67,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.916"
+              },
+              {
+                "Dòng gốc (từ 1)": 75,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.367"
+              },
+              {
+                "Dòng gốc (từ 1)": 81,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.194"
+              },
+              {
+                "Dòng gốc (từ 1)": 92,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.264"
+              },
+              {
+                "Dòng gốc (từ 1)": 95,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.074"
+              },
+              {
+                "Dòng gốc (từ 1)": 97,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.918"
+              },
+              {
+                "Dòng gốc (từ 1)": 109,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.4160000000000004"
+              },
+              {
+                "Dòng gốc (từ 1)": 111,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.406"
+              },
+              {
+                "Dòng gốc (từ 1)": 115,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.412"
+              },
+              {
+                "Dòng gốc (từ 1)": 120,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.2889999999999997"
+              },
+              {
+                "Dòng gốc (từ 1)": 122,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.441"
+              },
+              {
+                "Dòng gốc (từ 1)": 139,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.392"
+              },
+              {
+                "Dòng gốc (từ 1)": 148,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.377"
+              },
+              {
+                "Dòng gốc (từ 1)": 157,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.218"
+              },
+              {
+                "Dòng gốc (từ 1)": 162,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.238"
+              },
+              {
+                "Dòng gốc (từ 1)": 173,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.34"
+              },
+              {
+                "Dòng gốc (từ 1)": 185,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.259"
+              },
+              {
+                "Dòng gốc (từ 1)": 190,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.23"
+              },
+              {
+                "Dòng gốc (từ 1)": 193,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.207"
+              }
+            ],
+            "filled_missing": 3109452,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 17:24:00",
+            "Cuối": "2010-11-26 21:02:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        },
+        {
+          "name": "Điền biên — EDA",
+          "file": "power_eda\\05.parquet",
+          "method": "ffill rồi bfill cho 7 biến điện",
+          "reason": "Hoàn tất quy tắc B1; có thể làm phẳng biến động. Số ô thực thay đổi có thể bằng 0.",
+          "reference": "B1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 10,
+            "missing": 840179,
+            "missing_pct": 4.0485500845918505,
+            "duplicates": 0,
+            "outliers": 496390,
+            "nan": 0,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 85129,
+                "Count": 2075259,
+                "Mean": 1.1009083637271297,
+                "Median": 0.632,
+                "Std": 1.065798972509721,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.538,
+                "Max": 11.0
+              },
+              {
+                "Biến": "Global_reactive_power",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 38156,
+                "Count": 2075259,
+                "Mean": 0.12583239296878124,
+                "Median": 0.1,
+                "Std": 0.12227923876369727,
+                "Min": 0.0,
+                "Q1": 0.048,
+                "Q3": 0.194,
+                "Max": 2.0
+              },
+              {
+                "Biến": "Voltage",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 21144,
+                "Count": 2075259,
+                "Mean": 240.83330426226317,
+                "Median": 241.0,
+                "Std": 3.2317385267443686,
+                "Min": 223.2,
+                "Q1": 238.99,
+                "Q3": 242.865,
+                "Max": 253.94
+              },
+              {
+                "Biến": "Global_intensity",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 94377,
+                "Count": 2075259,
+                "Mean": 4.6456939109768935,
+                "Median": 2.8,
+                "Std": 4.457043506312702,
+                "Min": 0.2,
+                "Q1": 1.4,
+                "Q3": 6.4,
+                "Max": 50.0
+              },
+              {
+                "Biến": "Sub_metering_1",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 176447,
+                "Count": 2075259,
+                "Mean": 1.1103842942013502,
+                "Median": 0.0,
+                "Std": 5.989925019111468,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 88.0
+              },
+              {
+                "Biến": "Sub_metering_2",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 81137,
+                "Count": 2075259,
+                "Mean": 1.3073445290443264,
+                "Median": 0.0,
+                "Std": 5.778853338256126,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 1.0,
+                "Max": 80.0
+              },
+              {
+                "Biến": "Sub_metering_3",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 2075259,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 0,
+                "Count": 2075259,
+                "Mean": 6.45214452750235,
+                "Median": 1.0,
+                "Std": 8.395042009972446,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 17.0,
+                "Max": 31.0
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 2075259,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 1,
+            "changed_rows": 1,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 1,
+                "Biến": "Sub_metering_3",
+                "Trước": "nan",
+                "Sau": "16.0"
+              }
+            ],
+            "filled_missing": 1,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 17:24:00",
+            "Cuối": "2010-11-26 21:02:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        }
+      ],
+      "bounds": {
+        "Global_active_power": [
+          -1.619,
+          3.5090000000000003
+        ],
+        "Global_reactive_power": [
+          -0.18500000000000005,
+          0.43100000000000005
+        ],
+        "Voltage": [
+          231.90000000000003,
+          250.06
+        ],
+        "Global_intensity": [
+          -6.399999999999999,
+          14.399999999999999
+        ],
+        "Sub_metering_1": [
+          0.0,
+          0.0
+        ],
+        "Sub_metering_2": [
+          -1.5,
+          2.5
+        ],
+        "Sub_metering_3": [
+          -27.0,
+          45.0
+        ]
+      },
+      "note": "CSV1 toàn bộ 2.075.259 dòng. Giữ Date/Time gốc nên mã thiếu ở hai cột này còn tồn tại dù datetime đã được suy ra. EDA có nội suy hai phía; không dùng làm nhãn mô hình."
+    },
+    "Điện — nhánh dự báo (công suất)": {
+      "stages": [
+        {
+          "name": "Gốc — cột phục vụ dự báo",
+          "file": "power_forecast\\00.parquet",
+          "method": "Chọn Date, Time, công suất tổng",
+          "reason": "Đây là phép chiếu 3 cột, không phải mất dòng.",
+          "reference": "4.1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 3,
+            "missing": 1035293,
+            "missing_pct": 16.62913721451957,
+            "duplicates": 85616,
+            "outliers": 124074,
+            "nan": 0,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "str",
+                "Thiếu": 195114,
+                "Thiếu (%)": 9.401910797640198,
+                "Số đọc trực tiếp": 1756335,
+                "Không đọc thành số": 123810,
+                "Ô ngoài IQR": 124074,
+                "Count": 1756335,
+                "Mean": 181.52910283402656,
+                "Median": 0.628,
+                "Std": 1519.9267379643193,
+                "Min": -100.0,
+                "Q1": 0.304,
+                "Q3": 1.586,
+                "Max": 100000.0
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          }
+        },
+        {
+          "name": "Chuẩn hóa công suất",
+          "file": "power_forecast\\01.parquet",
+          "method": "Chuẩn hóa chuỗi theo B1",
+          "reason": "Giữ quy tắc mã chính.",
+          "reference": "4.1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 3,
+            "missing": 1036844,
+            "missing_pct": 16.654049767603304,
+            "duplicates": 120786,
+            "outliers": 128947,
+            "nan": 196665,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 196665,
+                "Thiếu (%)": 9.476648456891406,
+                "Số đọc trực tiếp": 1878594,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 128947,
+                "Count": 1878594,
+                "Mean": 169.78599934099654,
+                "Median": 0.626,
+                "Std": 1470.3101214011424,
+                "Min": -100.0,
+                "Q1": 0.304,
+                "Q3": 1.582,
+                "Max": 100000.0
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 2075259,
+            "changed_rows": 2075259,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 1,
+                "Biến": "Global_active_power",
+                "Trước": "4.216",
+                "Sau": "4.216"
+              },
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "Global_active_power",
+                "Trước": "9999",
+                "Sau": "9999.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 3,
+                "Biến": "Global_active_power",
+                "Trước": "-",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 4,
+                "Biến": "Global_active_power",
+                "Trước": "5.388",
+                "Sau": "5.388"
+              },
+              {
+                "Dòng gốc (từ 1)": 5,
+                "Biến": "Global_active_power",
+                "Trước": "3.666",
+                "Sau": "3.666"
+              },
+              {
+                "Dòng gốc (từ 1)": 6,
+                "Biến": "Global_active_power",
+                "Trước": "3.520",
+                "Sau": "3.52"
+              },
+              {
+                "Dòng gốc (từ 1)": 7,
+                "Biến": "Global_active_power",
+                "Trước": "3.702",
+                "Sau": "3.702"
+              },
+              {
+                "Dòng gốc (từ 1)": 8,
+                "Biến": "Global_active_power",
+                "Trước": "3,700 USD",
+                "Sau": "3.7"
+              },
+              {
+                "Dòng gốc (từ 1)": 9,
+                "Biến": "Global_active_power",
+                "Trước": "3.668",
+                "Sau": "3.668"
+              },
+              {
+                "Dòng gốc (từ 1)": 10,
+                "Biến": "Global_active_power",
+                "Trước": "3.662",
+                "Sau": "3.662"
+              },
+              {
+                "Dòng gốc (từ 1)": 11,
+                "Biến": "Global_active_power",
+                "Trước": "4.448",
+                "Sau": "4.448"
+              },
+              {
+                "Dòng gốc (từ 1)": 12,
+                "Biến": "Global_active_power",
+                "Trước": "5.412",
+                "Sau": "5.412"
+              },
+              {
+                "Dòng gốc (từ 1)": 13,
+                "Biến": "Global_active_power",
+                "Trước": "None",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 14,
+                "Biến": "Global_active_power",
+                "Trước": "5.268",
+                "Sau": "5.268"
+              },
+              {
+                "Dòng gốc (từ 1)": 15,
+                "Biến": "Global_active_power",
+                "Trước": "4.054",
+                "Sau": "4.054"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "Global_active_power",
+                "Trước": "9999",
+                "Sau": "9999.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 17,
+                "Biến": "Global_active_power",
+                "Trước": "3.270",
+                "Sau": "3.27"
+              },
+              {
+                "Dòng gốc (từ 1)": 18,
+                "Biến": "Global_active_power",
+                "Trước": "3.430",
+                "Sau": "3.43"
+              },
+              {
+                "Dòng gốc (từ 1)": 19,
+                "Biến": "Global_active_power",
+                "Trước": "3.266",
+                "Sau": "3.266"
+              },
+              {
+                "Dòng gốc (từ 1)": 20,
+                "Biến": "Global_active_power",
+                "Trước": "N/A",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 21,
+                "Biến": "Global_active_power",
+                "Trước": "5.894",
+                "Sau": "5.894"
+              },
+              {
+                "Dòng gốc (từ 1)": 22,
+                "Biến": "Global_active_power",
+                "Trước": "7.706",
+                "Sau": "7.706"
+              },
+              {
+                "Dòng gốc (từ 1)": 23,
+                "Biến": "Global_active_power",
+                "Trước": "7.026",
+                "Sau": "7.026"
+              },
+              {
+                "Dòng gốc (từ 1)": 24,
+                "Biến": "Global_active_power",
+                "Trước": "-",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 25,
+                "Biến": "Global_active_power",
+                "Trước": "4.474",
+                "Sau": "4.474"
+              },
+              {
+                "Dòng gốc (từ 1)": 26,
+                "Biến": "Global_active_power",
+                "Trước": "3.248",
+                "Sau": "3.248"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "Global_active_power",
+                "Trước": "",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "Global_active_power",
+                "Trước": "9999",
+                "Sau": "9999.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 29,
+                "Biến": "Global_active_power",
+                "Trước": "3.258",
+                "Sau": "3.258"
+              },
+              {
+                "Dòng gốc (từ 1)": 30,
+                "Biến": "Global_active_power",
+                "Trước": "None",
+                "Sau": "nan"
+              }
+            ],
+            "filled_missing": 0,
+            "introduced_missing": 1551
+          }
+        },
+        {
+          "name": "Ngưỡng công suất 0–11 kW",
+          "file": "power_forecast\\02.parquet",
+          "method": "Số ngoài ngưỡng về NaN",
+          "reason": "Không dùng ngưỡng học từ test.",
+          "reference": "4.1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 3,
+            "missing": 1127419,
+            "missing_pct": 18.108888256036153,
+            "duplicates": 146617,
+            "outliers": 74760,
+            "nan": 287240,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 287240,
+                "Thiếu (%)": 13.841163922189953,
+                "Số đọc trực tiếp": 1788019,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 74760,
+                "Count": 1788019,
+                "Mean": 1.0999391751429934,
+                "Median": 0.608,
+                "Std": 1.0732886810548496,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.534,
+                "Max": 11.0
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 90575,
+            "changed_rows": 90575,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 67,
+                "Biến": "Global_active_power",
+                "Trước": "293.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 97,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 109,
+                "Biến": "Global_active_power",
+                "Trước": "34.32",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 111,
+                "Biến": "Global_active_power",
+                "Trước": "33.92",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 122,
+                "Biến": "Global_active_power",
+                "Trước": "347.6",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 157,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 185,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 190,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 236,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 261,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 293,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 367,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 393,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 399,
+                "Biến": "Global_active_power",
+                "Trước": "-3.04",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 411,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 454,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 567,
+                "Biến": "Global_active_power",
+                "Trước": "-2.33",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 607,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 627,
+                "Biến": "Global_active_power",
+                "Trước": "754.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 642,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 665,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 683,
+                "Biến": "Global_active_power",
+                "Trước": "317.4",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 701,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 710,
+                "Biến": "Global_active_power",
+                "Trước": "-1.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 746,
+                "Biến": "Global_active_power",
+                "Trước": "226.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 765,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 768,
+                "Biến": "Global_active_power",
+                "Trước": "9999.0",
+                "Sau": "nan"
+              }
+            ],
+            "filled_missing": 0,
+            "introduced_missing": 90575
+          }
+        },
+        {
+          "name": "Lịch phút cho dự báo",
+          "file": "power_forecast\\03.parquet",
+          "method": "Đối chiếu mốc đọc được, khôi phục lịch đều",
+          "reason": "Lịch theo giả định đã công khai.",
+          "reference": "4.1",
+          "profile": {
+            "rows": 2075259,
+            "cols": 4,
+            "missing": 1127419,
+            "missing_pct": 13.581666192027116,
+            "duplicates": 0,
+            "outliers": 74760,
+            "nan": 287240,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 287240,
+                "Thiếu (%)": 13.841163922189953,
+                "Số đọc trực tiếp": 1788019,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 74760,
+                "Count": 1788019,
+                "Mean": 1.0999391751429934,
+                "Median": 0.608,
+                "Std": 1.0732886810548496,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.534,
+                "Max": 11.0
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 2075259,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [
+              "datetime"
+            ],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 17:24:00",
+            "Cuối": "2010-11-26 21:02:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        },
+        {
+          "name": "Điền tiến trong từng ngày",
+          "file": "power_forecast\\04.parquet",
+          "method": "ffill theo nhóm ngày; không bfill, không nối qua ngày",
+          "reason": "Đầu ngày thiếu có thể còn NaN. Chỉ dùng quá khứ; nhãn ngày vẫn phải qua tiêu chí đủ 1440 phút và tỷ lệ thiếu ≤20%.",
+          "reference": "4.1–4.2",
+          "profile": {
+            "rows": 2075259,
+            "cols": 4,
+            "missing": 859057,
+            "missing_pct": 10.348792608537055,
+            "duplicates": 0,
+            "outliers": 86005,
+            "nan": 18878,
+            "table": [
+              {
+                "Biến": "Date",
+                "Kiểu": "str",
+                "Thiếu": 494115,
+                "Thiếu (%)": 23.8097991624178,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1581144,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Time",
+                "Kiểu": "str",
+                "Thiếu": 346064,
+                "Thiếu (%)": 16.67570168350071,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 1729195,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "Global_active_power",
+                "Kiểu": "float64",
+                "Thiếu": 18878,
+                "Thiếu (%)": 0.9096695882297102,
+                "Số đọc trực tiếp": 2056381,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 86005,
+                "Count": 2056381,
+                "Mean": 1.1003337912575542,
+                "Median": 0.608,
+                "Std": 1.0736312184250472,
+                "Min": 0.076,
+                "Q1": 0.31,
+                "Q3": 1.534,
+                "Max": 11.0
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 2075259,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 268362,
+            "changed_rows": 268362,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.216"
+              },
+              {
+                "Dòng gốc (từ 1)": 3,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.216"
+              },
+              {
+                "Dòng gốc (từ 1)": 13,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "5.412"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.054"
+              },
+              {
+                "Dòng gốc (từ 1)": 20,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.266"
+              },
+              {
+                "Dòng gốc (từ 1)": 24,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "7.026"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.248"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.248"
+              },
+              {
+                "Dòng gốc (từ 1)": 30,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.258"
+              },
+              {
+                "Dòng gốc (từ 1)": 32,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.72"
+              },
+              {
+                "Dòng gốc (từ 1)": 57,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.852"
+              },
+              {
+                "Dòng gốc (từ 1)": 67,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.92"
+              },
+              {
+                "Dòng gốc (từ 1)": 75,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.408"
+              },
+              {
+                "Dòng gốc (từ 1)": 81,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "2.188"
+              },
+              {
+                "Dòng gốc (từ 1)": 92,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.298"
+              },
+              {
+                "Dòng gốc (từ 1)": 95,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.924"
+              },
+              {
+                "Dòng gốc (từ 1)": 97,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "4.224"
+              },
+              {
+                "Dòng gốc (từ 1)": 109,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.414"
+              },
+              {
+                "Dòng gốc (từ 1)": 111,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.418"
+              },
+              {
+                "Dòng gốc (từ 1)": 115,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.406"
+              },
+              {
+                "Dòng gốc (từ 1)": 120,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.316"
+              },
+              {
+                "Dòng gốc (từ 1)": 122,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.262"
+              },
+              {
+                "Dòng gốc (từ 1)": 139,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.406"
+              },
+              {
+                "Dòng gốc (từ 1)": 148,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.378"
+              },
+              {
+                "Dòng gốc (từ 1)": 157,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.214"
+              },
+              {
+                "Dòng gốc (từ 1)": 162,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.194"
+              },
+              {
+                "Dòng gốc (từ 1)": 173,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.37"
+              },
+              {
+                "Dòng gốc (từ 1)": 185,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.258"
+              },
+              {
+                "Dòng gốc (từ 1)": 190,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.238"
+              },
+              {
+                "Dòng gốc (từ 1)": 193,
+                "Biến": "Global_active_power",
+                "Trước": "nan",
+                "Sau": "3.226"
+              }
+            ],
+            "filled_missing": 268362,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 17:24:00",
+            "Cuối": "2010-11-26 21:02:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        }
+      ],
+      "bounds": {
+        "Global_active_power": [
+          -1.619,
+          3.5090000000000003
+        ],
+        "Global_reactive_power": [
+          -0.18500000000000005,
+          0.43100000000000005
+        ],
+        "Voltage": [
+          231.90000000000003,
+          250.06
+        ],
+        "Global_intensity": [
+          -6.399999999999999,
+          14.399999999999999
+        ],
+        "Sub_metering_1": [
+          0.0,
+          0.0
+        ],
+        "Sub_metering_2": [
+          -1.5,
+          2.5
+        ],
+        "Sub_metering_3": [
+          -27.0,
+          45.0
+        ]
+      },
+      "note": "Chỉ phân tích 3 cột nguồn phục vụ công suất dự báo. Kết thúc ở công suất phút; chưa tạo train/test hoặc huấn luyện mô hình. Việc chọn ngày và lag được thực hiện trong mã chính Chương 4."
+    },
+    "Thời tiết — CSV2": {
+      "stages": [
+        {
+          "name": "Gốc CSV2",
+          "file": "weather\\00.parquet",
+          "method": "Bỏ qua metadata trước header",
+          "reason": "Metadata không phải quan sát; tên cột thô được giữ trong các bảng so sánh.",
+          "reference": "3.1–3.3.2",
+          "profile": {
+            "rows": 34608,
+            "cols": 6,
+            "missing": 23298,
+            "missing_pct": 11.219949144706426,
+            "duplicates": 0,
+            "outliers": 4845,
+            "nan": 0,
+            "table": [
+              {
+                "Biến": "time",
+                "Kiểu": "str",
+                "Thiếu": 4628,
+                "Thiếu (%)": 13.372630605640316,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 29980,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Kiểu": "str",
+                "Thiếu": 2437,
+                "Thiếu (%)": 7.041724456773,
+                "Số đọc trực tiếp": 31349,
+                "Không đọc thành số": 822,
+                "Ô ngoài IQR": 56,
+                "Count": 31349,
+                "Mean": 77.03582251427478,
+                "Median": 80.0,
+                "Std": 15.156992627948485,
+                "Min": 23.0,
+                "Q1": 67.0,
+                "Q3": 90.0,
+                "Max": 100.0
+              },
+              {
+                "Biến": "dew_point_2m (°C)",
+                "Kiểu": "str",
+                "Thiếu": 3865,
+                "Thiếu (%)": 11.16793804900601,
+                "Số đọc trực tiếp": 29456,
+                "Không đọc thành số": 1287,
+                "Ô ngoài IQR": 139,
+                "Count": 29456,
+                "Mean": 7.107577403585008,
+                "Median": 7.6,
+                "Std": 5.576501577416666,
+                "Min": -14.3,
+                "Q1": 3.5,
+                "Q3": 11.3,
+                "Max": 21.5
+              },
+              {
+                "Biến": "apparent_temperature (°C)",
+                "Kiểu": "str",
+                "Thiếu": 2253,
+                "Thiếu (%)": 6.51005547850208,
+                "Số đọc trực tiếp": 31632,
+                "Không đọc thành số": 723,
+                "Ô ngoài IQR": 9,
+                "Count": 31632,
+                "Mean": 9.023160091047043,
+                "Median": 8.9,
+                "Std": 8.318569391555108,
+                "Min": -15.0,
+                "Q1": 2.8,
+                "Q3": 15.2,
+                "Max": 35.4
+              },
+              {
+                "Biến": "wind_speed_10m (km/h)",
+                "Kiểu": "str",
+                "Thiếu": 5672,
+                "Thiếu (%)": 16.389274156264445,
+                "Số đọc trực tiếp": 28936,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 540,
+                "Count": 28936,
+                "Mean": 12.869940558473873,
+                "Median": 11.7,
+                "Std": 6.428476140430618,
+                "Min": 0.0,
+                "Q1": 8.0,
+                "Q3": 16.6,
+                "Max": 51.7
+              },
+              {
+                "Biến": "precipitation (mm)",
+                "Kiểu": "str",
+                "Thiếu": 4443,
+                "Thiếu (%)": 12.838072122052704,
+                "Số đọc trực tiếp": 30165,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 4101,
+                "Count": 30165,
+                "Mean": 0.07335653903530583,
+                "Median": 0.0,
+                "Std": 0.2934526582235058,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 7.2
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          }
+        },
+        {
+          "name": "Chuyển số thời tiết",
+          "file": "weather\\01.parquet",
+          "method": "pd.to_numeric(errors=\"coerce\")",
+          "reason": "Chuỗi lỗi được chuyển NaN, không xóa đơn vị như CSV1.",
+          "reference": "3.3.2",
+          "profile": {
+            "rows": 34608,
+            "cols": 6,
+            "missing": 26130,
+            "missing_pct": 12.583795654184003,
+            "duplicates": 0,
+            "outliers": 4845,
+            "nan": 21502,
+            "table": [
+              {
+                "Biến": "time",
+                "Kiểu": "str",
+                "Thiếu": 4628,
+                "Thiếu (%)": 13.372630605640316,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 29980,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Kiểu": "float64",
+                "Thiếu": 3259,
+                "Thiếu (%)": 9.416897827092003,
+                "Số đọc trực tiếp": 31349,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 56,
+                "Count": 31349,
+                "Mean": 77.03582251427478,
+                "Median": 80.0,
+                "Std": 15.156992627948485,
+                "Min": 23.0,
+                "Q1": 67.0,
+                "Q3": 90.0,
+                "Max": 100.0
+              },
+              {
+                "Biến": "dew_point_2m (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 5152,
+                "Thiếu (%)": 14.886731391585762,
+                "Số đọc trực tiếp": 29456,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 139,
+                "Count": 29456,
+                "Mean": 7.107577403585008,
+                "Median": 7.6,
+                "Std": 5.576501577416666,
+                "Min": -14.3,
+                "Q1": 3.5,
+                "Q3": 11.3,
+                "Max": 21.5
+              },
+              {
+                "Biến": "apparent_temperature (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 2976,
+                "Thiếu (%)": 8.599167822468793,
+                "Số đọc trực tiếp": 31632,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 9,
+                "Count": 31632,
+                "Mean": 9.023160091047043,
+                "Median": 8.9,
+                "Std": 8.318569391555108,
+                "Min": -15.0,
+                "Q1": 2.8,
+                "Q3": 15.2,
+                "Max": 35.4
+              },
+              {
+                "Biến": "wind_speed_10m (km/h)",
+                "Kiểu": "float64",
+                "Thiếu": 5672,
+                "Thiếu (%)": 16.389274156264445,
+                "Số đọc trực tiếp": 28936,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 540,
+                "Count": 28936,
+                "Mean": 12.869940558473873,
+                "Median": 11.7,
+                "Std": 6.428476140430618,
+                "Min": 0.0,
+                "Q1": 8.0,
+                "Q3": 16.6,
+                "Max": 51.7
+              },
+              {
+                "Biến": "precipitation (mm)",
+                "Kiểu": "float64",
+                "Thiếu": 4443,
+                "Thiếu (%)": 12.838072122052704,
+                "Số đọc trực tiếp": 30165,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 4101,
+                "Count": 30165,
+                "Mean": 0.07335653903530583,
+                "Median": 0.0,
+                "Std": 0.2934526582235058,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 7.2
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 173040,
+            "changed_rows": 34608,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 1,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "91",
+                "Sau": "91.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 2,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "92",
+                "Sau": "92.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 3,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "93",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 4,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "93",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 5,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "93",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 6,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "94",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 7,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "93",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 8,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "94",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 9,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "94",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 10,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "93",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 11,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "92   ",
+                "Sau": "92.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 12,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "90",
+                "Sau": "90.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 13,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "89",
+                "Sau": "89.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 14,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "88",
+                "Sau": "88.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 15,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "90",
+                "Sau": "90.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 16,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "94",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 17,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "null",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 18,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "94   ",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 19,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "NULL",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 20,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "92",
+                "Sau": "92.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 21,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "92",
+                "Sau": "92.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 22,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "91",
+                "Sau": "91.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 23,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "92   ",
+                "Sau": "92.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 24,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "94",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 25,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "96   ",
+                "Sau": "96.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 26,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "97",
+                "Sau": "97.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "unknown",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "chưa rõ",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 29,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "chưa rõ",
+                "Sau": "nan"
+              },
+              {
+                "Dòng gốc (từ 1)": 30,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "97",
+                "Sau": "97.0"
+              }
+            ],
+            "filled_missing": 0,
+            "introduced_missing": 2832
+          }
+        },
+        {
+          "name": "Khôi phục lịch giờ",
+          "file": "weather\\02.parquet",
+          "method": "Chỉ suy ra mốc lỗi sau khi kiểm tra lịch",
+          "reason": "7680 mốc được suy ra; giữ cột time thô.",
+          "reference": "3.3.2",
+          "profile": {
+            "rows": 34608,
+            "cols": 7,
+            "missing": 26130,
+            "missing_pct": 10.786110560729146,
+            "duplicates": 0,
+            "outliers": 4845,
+            "nan": 21502,
+            "table": [
+              {
+                "Biến": "time",
+                "Kiểu": "str",
+                "Thiếu": 4628,
+                "Thiếu (%)": 13.372630605640316,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 29980,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Kiểu": "float64",
+                "Thiếu": 3259,
+                "Thiếu (%)": 9.416897827092003,
+                "Số đọc trực tiếp": 31349,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 56,
+                "Count": 31349,
+                "Mean": 77.03582251427478,
+                "Median": 80.0,
+                "Std": 15.156992627948485,
+                "Min": 23.0,
+                "Q1": 67.0,
+                "Q3": 90.0,
+                "Max": 100.0
+              },
+              {
+                "Biến": "dew_point_2m (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 5152,
+                "Thiếu (%)": 14.886731391585762,
+                "Số đọc trực tiếp": 29456,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 139,
+                "Count": 29456,
+                "Mean": 7.107577403585008,
+                "Median": 7.6,
+                "Std": 5.576501577416666,
+                "Min": -14.3,
+                "Q1": 3.5,
+                "Q3": 11.3,
+                "Max": 21.5
+              },
+              {
+                "Biến": "apparent_temperature (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 2976,
+                "Thiếu (%)": 8.599167822468793,
+                "Số đọc trực tiếp": 31632,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 9,
+                "Count": 31632,
+                "Mean": 9.023160091047043,
+                "Median": 8.9,
+                "Std": 8.318569391555108,
+                "Min": -15.0,
+                "Q1": 2.8,
+                "Q3": 15.2,
+                "Max": 35.4
+              },
+              {
+                "Biến": "wind_speed_10m (km/h)",
+                "Kiểu": "float64",
+                "Thiếu": 5672,
+                "Thiếu (%)": 16.389274156264445,
+                "Số đọc trực tiếp": 28936,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 540,
+                "Count": 28936,
+                "Mean": 12.869940558473873,
+                "Median": 11.7,
+                "Std": 6.428476140430618,
+                "Min": 0.0,
+                "Q1": 8.0,
+                "Q3": 16.6,
+                "Max": 51.7
+              },
+              {
+                "Biến": "precipitation (mm)",
+                "Kiểu": "float64",
+                "Thiếu": 4443,
+                "Thiếu (%)": 12.838072122052704,
+                "Số đọc trực tiếp": 30165,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 4101,
+                "Count": 30165,
+                "Mean": 0.07335653903530583,
+                "Median": 0.0,
+                "Std": 0.2934526582235058,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 7.2
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 34608,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [
+              "datetime"
+            ],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 00:00:00",
+            "Cuối": "2010-11-26 23:00:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        },
+        {
+          "name": "Điền tiến 4 biến thời tiết",
+          "file": "weather\\03.parquet",
+          "method": "ffill; không nội suy từ tương lai",
+          "reason": "Giả định giá trị gần nhất còn phù hợp; cần kiểm tra thời điểm dữ liệu sẵn có.",
+          "reference": "3.3.2",
+          "profile": {
+            "rows": 34608,
+            "cols": 7,
+            "missing": 9072,
+            "missing_pct": 3.7447988904299585,
+            "duplicates": 0,
+            "outliers": 4985,
+            "nan": 4444,
+            "table": [
+              {
+                "Biến": "time",
+                "Kiểu": "str",
+                "Thiếu": 4628,
+                "Thiếu (%)": 13.372630605640316,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 29980,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 66,
+                "Count": 34608,
+                "Mean": 77.01438973647711,
+                "Median": 80.0,
+                "Std": 15.162245454692457,
+                "Min": 23.0,
+                "Q1": 67.0,
+                "Q3": 90.0,
+                "Max": 100.0
+              },
+              {
+                "Biến": "dew_point_2m (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 169,
+                "Count": 34608,
+                "Mean": 7.116042533518261,
+                "Median": 7.7,
+                "Std": 5.584810123651645,
+                "Min": -14.3,
+                "Q1": 3.5,
+                "Q3": 11.3,
+                "Max": 21.5
+              },
+              {
+                "Biến": "apparent_temperature (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 1,
+                "Thiếu (%)": 0.0028895053166897826,
+                "Số đọc trực tiếp": 34607,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 9,
+                "Count": 34607,
+                "Mean": 9.035937816048776,
+                "Median": 8.9,
+                "Std": 8.317059863642914,
+                "Min": -15.0,
+                "Q1": 2.9,
+                "Q3": 15.2,
+                "Max": 35.4
+              },
+              {
+                "Biến": "wind_speed_10m (km/h)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 640,
+                "Count": 34608,
+                "Mean": 12.86772711511789,
+                "Median": 11.7,
+                "Std": 6.4301912360642035,
+                "Min": 0.0,
+                "Q1": 8.0,
+                "Q3": 16.6,
+                "Max": 51.7
+              },
+              {
+                "Biến": "precipitation (mm)",
+                "Kiểu": "float64",
+                "Thiếu": 4443,
+                "Thiếu (%)": 12.838072122052704,
+                "Số đọc trực tiếp": 30165,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 4101,
+                "Count": 30165,
+                "Mean": 0.07335653903530583,
+                "Median": 0.0,
+                "Std": 0.2934526582235058,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 7.2
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 34608,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 17058,
+            "changed_rows": 14272,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 17,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 19,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "97.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 28,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "97.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 29,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "97.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 33,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "97.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 36,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "99.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 46,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "95.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 47,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "95.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 92,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "82.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 98,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "88.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 110,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "84.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 145,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 155,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "95.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 157,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 158,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 163,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "79.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 176,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 205,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 208,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "86.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 210,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "84.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 219,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "97.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 225,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "100.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 228,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "99.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 229,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "99.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 237,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 246,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "94.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 263,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 264,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "93.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 269,
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Trước": "nan",
+                "Sau": "89.0"
+              }
+            ],
+            "filled_missing": 17058,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 00:00:00",
+            "Cuối": "2010-11-26 23:00:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        },
+        {
+          "name": "Điền mưa thiếu bằng 0",
+          "file": "weather\\04.parquet",
+          "method": "fillna(0) cho mưa",
+          "reason": "Giả định của bài, có thể làm thấp tổng mưa; không coi là số đo đã xác thực.",
+          "reference": "3.3.2",
+          "profile": {
+            "rows": 34608,
+            "cols": 7,
+            "missing": 4629,
+            "missing_pct": 1.910788587279572,
+            "duplicates": 0,
+            "outliers": 4985,
+            "nan": 1,
+            "table": [
+              {
+                "Biến": "time",
+                "Kiểu": "str",
+                "Thiếu": 4628,
+                "Thiếu (%)": 13.372630605640316,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 29980,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 66,
+                "Count": 34608,
+                "Mean": 77.01438973647711,
+                "Median": 80.0,
+                "Std": 15.162245454692457,
+                "Min": 23.0,
+                "Q1": 67.0,
+                "Q3": 90.0,
+                "Max": 100.0
+              },
+              {
+                "Biến": "dew_point_2m (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 169,
+                "Count": 34608,
+                "Mean": 7.116042533518261,
+                "Median": 7.7,
+                "Std": 5.584810123651645,
+                "Min": -14.3,
+                "Q1": 3.5,
+                "Q3": 11.3,
+                "Max": 21.5
+              },
+              {
+                "Biến": "apparent_temperature (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 1,
+                "Thiếu (%)": 0.0028895053166897826,
+                "Số đọc trực tiếp": 34607,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 9,
+                "Count": 34607,
+                "Mean": 9.035937816048776,
+                "Median": 8.9,
+                "Std": 8.317059863642914,
+                "Min": -15.0,
+                "Q1": 2.9,
+                "Q3": 15.2,
+                "Max": 35.4
+              },
+              {
+                "Biến": "wind_speed_10m (km/h)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 640,
+                "Count": 34608,
+                "Mean": 12.86772711511789,
+                "Median": 11.7,
+                "Std": 6.4301912360642035,
+                "Min": 0.0,
+                "Q1": 8.0,
+                "Q3": 16.6,
+                "Max": 51.7
+              },
+              {
+                "Biến": "precipitation (mm)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 4101,
+                "Count": 34608,
+                "Mean": 0.0639389736477115,
+                "Median": 0.0,
+                "Std": 0.27506521628168334,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 7.2
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 34608,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 4443,
+            "changed_rows": 4443,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [
+              {
+                "Dòng gốc (từ 1)": 15,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 22,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 24,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 27,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 36,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 47,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 67,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 78,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 81,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 87,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 113,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 115,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 123,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 141,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 145,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 153,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 178,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 180,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 192,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 209,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 215,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 216,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 217,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 226,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 231,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 234,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 235,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 244,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 248,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              },
+              {
+                "Dòng gốc (từ 1)": 250,
+                "Biến": "precipitation (mm)",
+                "Trước": "nan",
+                "Sau": "0.0"
+              }
+            ],
+            "filled_missing": 4443,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 00:00:00",
+            "Cuối": "2010-11-26 23:00:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        },
+        {
+          "name": "Giới hạn miền giá trị",
+          "file": "weather\\05.parquet",
+          "method": "Độ ẩm 0–100%; gió và mưa ≥0",
+          "reason": "Giới hạn theo mã nguồn; không tự xóa các điểm ngoài IQR.",
+          "reference": "3.3.2",
+          "profile": {
+            "rows": 34608,
+            "cols": 7,
+            "missing": 4629,
+            "missing_pct": 1.910788587279572,
+            "duplicates": 0,
+            "outliers": 4985,
+            "nan": 1,
+            "table": [
+              {
+                "Biến": "time",
+                "Kiểu": "str",
+                "Thiếu": 4628,
+                "Thiếu (%)": 13.372630605640316,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 29980,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              },
+              {
+                "Biến": "RELATIVE_HUMIDITY_2M (%)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 66,
+                "Count": 34608,
+                "Mean": 77.01438973647711,
+                "Median": 80.0,
+                "Std": 15.162245454692457,
+                "Min": 23.0,
+                "Q1": 67.0,
+                "Q3": 90.0,
+                "Max": 100.0
+              },
+              {
+                "Biến": "dew_point_2m (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 169,
+                "Count": 34608,
+                "Mean": 7.116042533518261,
+                "Median": 7.7,
+                "Std": 5.584810123651645,
+                "Min": -14.3,
+                "Q1": 3.5,
+                "Q3": 11.3,
+                "Max": 21.5
+              },
+              {
+                "Biến": "apparent_temperature (°C)",
+                "Kiểu": "float64",
+                "Thiếu": 1,
+                "Thiếu (%)": 0.0028895053166897826,
+                "Số đọc trực tiếp": 34607,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 9,
+                "Count": 34607,
+                "Mean": 9.035937816048776,
+                "Median": 8.9,
+                "Std": 8.317059863642914,
+                "Min": -15.0,
+                "Q1": 2.9,
+                "Q3": 15.2,
+                "Max": 35.4
+              },
+              {
+                "Biến": "wind_speed_10m (km/h)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 640,
+                "Count": 34608,
+                "Mean": 12.86772711511789,
+                "Median": 11.7,
+                "Std": 6.4301912360642035,
+                "Min": 0.0,
+                "Q1": 8.0,
+                "Q3": 16.6,
+                "Max": 51.7
+              },
+              {
+                "Biến": "precipitation (mm)",
+                "Kiểu": "float64",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 34608,
+                "Không đọc thành số": 0,
+                "Ô ngoài IQR": 4101,
+                "Count": 34608,
+                "Mean": 0.0639389736477115,
+                "Median": 0.0,
+                "Std": 0.27506521628168334,
+                "Min": 0.0,
+                "Q1": 0.0,
+                "Q3": 0.0,
+                "Max": 7.2
+              },
+              {
+                "Biến": "datetime",
+                "Kiểu": "datetime64[us]",
+                "Thiếu": 0,
+                "Thiếu (%)": 0.0,
+                "Số đọc trực tiếp": 0,
+                "Không đọc thành số": 34608,
+                "Ô ngoài IQR": 0,
+                "Count": 0,
+                "Mean": NaN,
+                "Median": NaN,
+                "Std": NaN,
+                "Min": NaN,
+                "Q1": NaN,
+                "Q3": NaN,
+                "Max": NaN
+              }
+            ]
+          },
+          "change": {
+            "changed_cells": 0,
+            "changed_rows": 0,
+            "removed_rows": 0,
+            "added_columns": [],
+            "examples": [],
+            "filled_missing": 0,
+            "introduced_missing": 0
+          },
+          "time": {
+            "Mốc không đọc được": 0,
+            "Mốc trùng (sau lần đầu)": 0,
+            "Đã tăng dần": true,
+            "Đầu": "2006-12-16 00:00:00",
+            "Cuối": "2010-11-26 23:00:00",
+            "Mốc thiếu ước tính theo tần suất đã chọn": 0,
+            "Khoảng cách không khớp bội tần suất": 0
+          }
+        }
+      ],
+      "bounds": {
+        "RELATIVE_HUMIDITY_2M (%)": [
+          32.5,
+          124.5
+        ],
+        "dew_point_2m (°C)": [
+          -8.200000000000001,
+          23.0
+        ],
+        "apparent_temperature (°C)": [
+          -15.799999999999997,
+          33.8
+        ],
+        "wind_speed_10m (km/h)": [
+          -4.900000000000002,
+          29.500000000000004
+        ],
+        "precipitation (mm)": [
+          0.0,
+          0.0
+        ]
+      },
+      "note": "34.608 quan sát giờ. Giữ tên biến thô để so sánh; bảng mô hình đổi tên theo từ điển đính kèm. Cột time gốc được giữ để truy vết, không dùng để ghép sau khôi phục."
+    }
+  },
+  "power_check": {
+    "Global_active_power": {
+      "max_abs_error": 6.66666666759852e-07,
+      "matches_tolerance": true
+    },
+    "Global_reactive_power": {
+      "max_abs_error": 6.666666663157628e-08,
+      "matches_tolerance": true
+    },
+    "Voltage": {
+      "max_abs_error": 1.507921359689135e-05,
+      "matches_tolerance": true
+    },
+    "Global_intensity": {
+      "max_abs_error": 1.6666666695641652e-06,
+      "matches_tolerance": true
+    },
+    "Sub_metering_1": {
+      "max_abs_error": 4.2857142972252404e-06,
+      "matches_tolerance": true
+    },
+    "Sub_metering_2": {
+      "max_abs_error": 2.6666666741448353e-06,
+      "matches_tolerance": true
+    },
+    "Sub_metering_3": {
+      "max_abs_error": 1.8210862613443624e-06,
+      "matches_tolerance": true
+    }
+  },
+  "weather_check": {
+    "RELATIVE_HUMIDITY_2M (%)": true,
+    "dew_point_2m (°C)": true,
+    "apparent_temperature (°C)": true,
+    "wind_speed_10m (km/h)": true,
+    "precipitation (mm)": true
+  },
+  "weather_metadata": [
+    "latitude,longitude,elevation,utc_offset_seconds,timezone,timezone_abbreviation",
+    "48.822495,2.2881355,46.0,7200,Europe/Berlin,GMT+2"
+  ],
+  "merge_check": {
+    "rows": 2075259,
+    "unique_minutes": true,
+    "hour_keys_match": true,
+    "weather_hours_unique": true,
+    "all_hours_found": true,
+    "note": "Kiểm tra bảng Parquet nộp kèm: khóa phút–giờ và quan hệ many-to-one. Không huấn luyện lại mô hình."
+  }
+}

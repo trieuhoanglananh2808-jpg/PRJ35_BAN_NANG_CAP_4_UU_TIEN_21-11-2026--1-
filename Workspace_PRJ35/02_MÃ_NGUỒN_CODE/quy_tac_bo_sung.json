@@ -1,0 +1,12 @@
+{
+  "thresholds": [
+    15,
+    20,
+    25
+  ],
+  "main_threshold": 20,
+  "sensitivity_split": "train/validation only",
+  "fallback": "RF if complete X; otherwise t-7 if valid; otherwise stop",
+  "selection": "No tuning; fixed existing RF",
+  "status": "Retrospective extension. Test already observed in earlier work. Weather availability assumed, not verified."
+}

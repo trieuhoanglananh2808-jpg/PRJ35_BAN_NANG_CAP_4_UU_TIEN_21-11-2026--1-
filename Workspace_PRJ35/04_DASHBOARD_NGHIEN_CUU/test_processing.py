@@ -1,0 +1,58 @@
+"""Dữ liệu tổng hợp chỉ dùng kiểm thử, không được đưa vào dashboard nghiên cứu."""
+import io
+import unittest
+import numpy as np
+import pandas as pd
+from processing import (apply_step,profile,bounds_for,change_summary,read_upload,time_audit)
+
+
+class ProcessingTests(unittest.TestCase):
+    def test_train_only_and_original(self):
+        df=pd.DataFrame({'x':[1.,3.,np.nan,1000.,np.nan], 'tap':['train','train','train','test','test']})
+        old=df.copy(deep=True)
+        result,params=apply_step(df,'Điền trung vị',['x'],fit_mask=df.tap.eq('train'))
+        self.assertEqual(params['x'],2)
+        self.assertEqual(result.x.iloc[4],2)
+        pd.testing.assert_frame_equal(df,old)
+        self.assertEqual(change_summary(df,result)['changed_cells'],2)
+        self.assertEqual(change_summary(df,result)['filled_missing'],2)
+        self.assertEqual(change_summary(df,result)['introduced_missing'],0)
+
+    def test_duplicate_row_identity(self):
+        df=pd.DataFrame({'a':['x','x','y']})
+        out,_=apply_step(df,'Loại dòng trùng hoàn toàn',[])
+        self.assertEqual(list(out.index),[0,2])
+        self.assertEqual(change_summary(df,out)['removed_rows'],1)
+
+    def test_empty_text_constant(self):
+        empty=pd.DataFrame({'x':pd.Series(dtype=float)})
+        self.assertEqual(profile(empty)['rows'],0)
+        text=pd.DataFrame({'x':['abc','?','']})
+        self.assertEqual(profile(text)['missing'],2)
+        self.assertEqual(bounds_for(pd.DataFrame({'x':[2,2,2]})),{})
+        with self.assertRaises(ValueError):apply_step(text,'Điền trung vị',['x'])
+
+    def test_iqr_is_not_deletion(self):
+        df=pd.DataFrame({'x':[1.,2.,3.,4.,100.]})
+        p=profile(df)
+        self.assertEqual(p['outliers'],1)
+        self.assertEqual(len(df),5)
+        out,_=apply_step(df,'Chặn theo IQR train',['x'],fit_mask=df.index<4)
+        self.assertEqual(out.x.iloc[-1],5.5)
+        self.assertEqual(len(out),5)
+
+    def test_csv_and_excel(self):
+        df=read_upload(b'a;b\n1;?\n2;hello\n','test.csv',sep=';')
+        self.assertEqual(df.iloc[0,1],'?')
+        buf=io.BytesIO();df.to_excel(buf,index=False)
+        pd.testing.assert_frame_equal(read_upload(buf.getvalue(),'test.xlsx'),df)
+
+    def test_time_audit(self):
+        s=pd.Series(['2020-01-01 00:00','2020-01-01 00:02','bad','2020-01-01 00:02'])
+        r=time_audit(s,fmt='%Y-%m-%d %H:%M',freq='1min')
+        self.assertEqual(r['Mốc không đọc được'],1)
+        self.assertEqual(r['Mốc trùng (sau lần đầu)'],1)
+        self.assertEqual(r['Mốc thiếu ước tính theo tần suất đã chọn'],1)
+
+
+if __name__=='__main__':unittest.main()

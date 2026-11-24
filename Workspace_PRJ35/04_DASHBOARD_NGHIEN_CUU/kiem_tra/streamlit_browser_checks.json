@@ -1,0 +1,7 @@
+{
+  "errors": [],
+  "research_comparison_download": true,
+  "upload_real_30_weather_rows": true,
+  "normalize_step": true,
+  "processed_csv_download": true
+}

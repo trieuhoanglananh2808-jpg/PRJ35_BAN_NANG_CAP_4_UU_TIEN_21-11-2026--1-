@@ -1,0 +1,77 @@
+[
+  {
+    "branch": "Điện — EDA (7 biến)",
+    "page": "1. Tổng quan dữ liệu",
+    "passed": true
+  },
+  {
+    "branch": "Điện — EDA (7 biến)",
+    "page": "2. Trước xử lý",
+    "passed": true
+  },
+  {
+    "branch": "Điện — EDA (7 biến)",
+    "page": "3. Quá trình xử lý",
+    "passed": true
+  },
+  {
+    "branch": "Điện — EDA (7 biến)",
+    "page": "4. So sánh trước – sau",
+    "passed": true
+  },
+  {
+    "branch": "Điện — EDA (7 biến)",
+    "page": "5. Đánh giá kết quả",
+    "passed": true
+  },
+  {
+    "branch": "Điện — nhánh dự báo (công suất)",
+    "page": "1. Tổng quan dữ liệu",
+    "passed": true
+  },
+  {
+    "branch": "Điện — nhánh dự báo (công suất)",
+    "page": "2. Trước xử lý",
+    "passed": true
+  },
+  {
+    "branch": "Điện — nhánh dự báo (công suất)",
+    "page": "3. Quá trình xử lý",
+    "passed": true
+  },
+  {
+    "branch": "Điện — nhánh dự báo (công suất)",
+    "page": "4. So sánh trước – sau",
+    "passed": true
+  },
+  {
+    "branch": "Điện — nhánh dự báo (công suất)",
+    "page": "5. Đánh giá kết quả",
+    "passed": true
+  },
+  {
+    "branch": "Thời tiết — CSV2",
+    "page": "1. Tổng quan dữ liệu",
+    "passed": true
+  },
+  {
+    "branch": "Thời tiết — CSV2",
+    "page": "2. Trước xử lý",
+    "passed": true
+  },
+  {
+    "branch": "Thời tiết — CSV2",
+    "page": "3. Quá trình xử lý",
+    "passed": true
+  },
+  {
+    "branch": "Thời tiết — CSV2",
+    "page": "4. So sánh trước – sau",
+    "passed": true
+  },
+  {
+    "branch": "Thời tiết — CSV2",
+    "page": "5. Đánh giá kết quả",
+    "passed": true
+  }
+]

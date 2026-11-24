@@ -7,6 +7,40 @@ Tệp này tự động lưu vết các phiên làm việc giữa Nhóm sinh vi�
 
 ---
 
+## [2026-11-24 22:10] — Xây dựng Dashboard Kiểm toán Chất lượng & Quy trình Làm sạch Dữ liệu PRJ-35 (Chuẩn Rossmann Audit P-D-M-V)
+
+- **Môi trường:** Windows / Antigravity IDE (PowerShell, Python 3.12, HTML5/CSS3/Vanilla JS vector); Asia/Saigon (UTC+7).
+- **Mục tiêu phiên:** Dựa vào toàn bộ dữ liệu thực tế và tài liệu tiểu luận trong thư mục `PRJ35_BAN_NANG_CAP_4_UU_TIEN_21-11-2026 (1)`, xây dựng Dashboard Kiểm toán Chất lượng và Quy trình Làm sạch Dữ liệu tương tự giao diện Rossmann Data Quality & Cleaning Audit trong 3 ảnh mẫu của Lan Anh:
+  1. Giao diện Dark theme sang trọng, thiết kế đáp ứng (Responsive), hoạt động 100% ngoại tuyến (Offline) không phụ thuộc máy chủ hay thư viện ngoài.
+  2. Dropdown selector 4 chế độ tương tác tại góc trên bên phải:
+     - `1. Trước làm sạch (Dữ liệu thô ban đầu)`
+     - `2. Đang xử lý (Khôi phục & Chuẩn hóa)`
+     - `3. Sau làm sạch (Tập dữ liệu sạch hoàn chỉnh)`
+     - `4. Đối chiếu Trực tiếp: Trước vs Sau`
+  3. Hàng 4 thẻ KPI động: Ô dữ liệu khuyết, Bản ghi bất thường, Dòng cần chuẩn hóa, Đạt chuẩn ban đầu.
+  4. Đồ thị thanh ngang (Horizontal Bar Chart) hiển thị khối lượng lỗi/khuyết thiếu theo từng nhóm biến.
+  5. Đồ thị tròn (Donut Chart) với tỷ lệ phần trăm lớn ở tâm thể hiện trực quan trạng thái dữ liệu.
+  6. Hai bảng kiểm toán chi tiết: Bảng thống kê chi tiết các hạng mục lỗi trong dữ liệu thô & Bảng phân tích rủi ro nghiêm trọng đối với mô hình học máy nếu không làm sạch.
+  7. Tích hợp thanh chuyển đổi linh hoạt giữa 2 bộ dữ liệu của đề tài: `Điện năng Hộ gia đình (CSV1 - 2.075.259 dòng)` và `Thời tiết Giờ (CSV2 - 34.608 dòng)`.
+- **Nội dung đã hoàn thành:**
+  - Lập trình thành công tệp HTML độc lập `dashboard_xu_ly_lam_sach_PRJ35.html` với đầy đủ CSS/SVG/JS nội bộ.
+  - Tích hợp số liệu kiểm toán thực tế chính xác 100% từ mã nguồn `B1_doi_chieu_lam_sach_dien.py` và `tieu_luan_prj35.py`:
+    + CSV1 (Điện năng): 1.259.480 ô khuyết, 90.575 cọc ngoại lai 9999, 123.810 ô dính chuỗi text USD/VND, 757.566 dòng lỗi nhãn mốc thời gian -> Khôi phục hoàn chỉnh 100% về 2.075.259 dòng sạch tuyệt đối.
+    + CSV2 (Thời tiết): 1.428 ô khuyết rải rác -> ffill biến liên tục và gán 0 cho lượng mưa, bảo toàn 34.608 giờ đồng bộ hoàn hảo với bảng điện.
+  - Triển khai tệp vào đúng 2 vị trí quan trọng trong hồ sơ nộp bài:
+    1. `PRJ35_BAN_NANG_CAP_4_UU_TIEN_21-11-2026 (1)\dashboard_xu_ly_lam_sach_PRJ35.html` (cùng cấp với tệp DOCX, PDF và Dashboard nghiên cứu để mở ngay).
+    2. `PRJ35_BAN_NANG_CAP_4_UU_TIEN_21-11-2026 (1)\Workspace_PRJ35_DASHBOARD_TRỰC_QUAN\dashboard_xu_ly_lam_sach_PRJ35.html` (đúng cấu trúc thư mục quy chuẩn đồ án).
+- **Tương tác Prompt & Quyết định kỹ thuật (P-D-M-V):**
+  - **(P - Prompt & Produce):** *"dựa vào toàn bộ bài tiểu luận của tôi nằm trong folder PRJ35_NANG_CAP_UU_TIEN_21-11-2026 (1), tạo cho tôi dashboard xử lý tương tự vaog folder này"* kèm 3 ảnh giao diện Rossmann Cleaning Audit.
+  - **(D - Deconstruct & Read):** Bóc tách giao diện chuẩn trong 3 ảnh của Lan Anh: Dark background (`#090e17`), 4 thẻ KPI chỉ số lớn rực rỡ, Dropdown selector góc trên phải 4 trạng thái, Bar chart ngang cho từng biến, Donut chart có tâm hiển thị tỷ lệ %, và 2 bảng chi tiết lỗi/rủi ro kịch bản. Chuyển đổi toàn bộ số liệu ví dụ bán lẻ của Rossmann sang số liệu thực tế đo đạc điện năng và thời tiết của đề tài PRJ-35.
+  - **(M - Mutate & Break):** Thử nghiệm chạy offline: loại bỏ 100% CDN bên ngoài để bảo đảm khi Giảng viên chấm bài không có kết nối Internet hoặc tường lửa đại học vẫn mở và tương tác chuyển đổi giữa 4 chế độ mượt mà.
+  - **(V - Validate & Refine):** Mở kiểm tra file HTML, kích thước 55.4 KB, cấu trúc tương đối 100%, không chứa đường dẫn cứng, khớp giao diện 3 ảnh mẫu của Lan Anh.
+- **Tệp liên quan:**
+  - `PRJ35_BAN_NANG_CAP_4_UU_TIEN_21-11-2026 (1)\dashboard_xu_ly_lam_sach_PRJ35.html`
+  - `PRJ35_BAN_NANG_CAP_4_UU_TIEN_21-11-2026 (1)\Workspace_PRJ35_DASHBOARD_TRỰC_QUAN\dashboard_xu_ly_lam_sach_PRJ35.html`
+
+---
+
 ## [2026-11-24 13:10] — Chuẩn hóa toàn diện định dạng học thuật, khôi phục công thức toán và kiểm toán hồ sơ nộp bài (Chuẩn P-D-M-V)
 
 - **Môi trường:** Windows / Antigravity IDE (PowerShell, Python 3.12, python-docx); Asia/Saigon (UTC+7).

@@ -1,0 +1,139 @@
+---
+jupyter: python3
+---
+
+"""Tái lập minh chứng PRJ-35 từ CSV thật; chỉ ghi vào evidence/ của dashboard."""
+from pathlib import Path
+import hashlib
+import json
+import sys
+import numpy as np
+import pandas as pd
+from processing import profile, bounds_for, change_summary, time_audit
+
+BASE=Path(__file__).resolve().parent
+CODE=BASE.parent/'02_MÃ_NGUỒN_CODE'
+EVIDENCE=BASE/'evidence'
+LIMITS={'Global_active_power':(0,11),'Global_reactive_power':(0,2),
+        'Voltage':(210,255),'Global_intensity':(0,50),
+        'Sub_metering_1':(0,90),'Sub_metering_2':(0,82),'Sub_metering_3':(0,35)}
+WEATHER={'RELATIVE_HUMIDITY_2M (%)':'relative_humidity_pct',
+         'dew_point_2m (°C)':'dew_point_c','apparent_temperature (°C)':'apparent_temperature_c',
+         'wind_speed_10m (km/h)':'wind_speed_kmh','precipitation (mm)':'precipitation_mm'}
+
+
+def save_step(folder, stages, frame, name, method, reason, reference, previous=None, bounds=None):
+    """Lưu từng trạng thái độc lập, thống kê toàn bảng và ví dụ ô thay đổi."""
+    folder.mkdir(parents=True,exist_ok=True)
+    number=len(stages)
+    file=f'{number:02}.parquet'
+    frame.to_parquet(folder/file,index=True)
+    stats=profile(frame,bounds)
+    change=change_summary(previous,frame) if previous is not None else {
+        'changed_cells':0,'changed_rows':0,'removed_rows':0,'added_columns':[],'examples':[]}
+    rec={'name':name,'file':str((folder/file).relative_to(EVIDENCE)),
+         'method':method,'reason':reason,'reference':reference,'profile':stats,'change':change}
+    if 'datetime' in frame:
+        rec['time']=time_audit(frame.datetime,freq='1h' if folder.name=='weather' else '1min')
+    stages.append(rec)
+    print(f'{folder.name}: {name}; rows={len(frame)}; missing={stats["missing"]}',flush=True)
+
+
+def prepare():
+    EVIDENCE.mkdir(exist_ok=True)
+    paths=list((CODE/'data/nguon_goc').glob('*.csv'))
+    power_path=next(p for p in paths if p.name.endswith('CSV1.csv'))
+    weather_path=next(p for p in paths if p.name.endswith('CSV2.csv'))
+    report={'sources':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},'branches':{}}
+    raw=pd.read_csv(power_path,sep=';',dtype=str,keep_default_na=False)
+    stages=[];folder=EVIDENCE/'power_eda';bounds=bounds_for(raw)
+    save_step(folder,stages,raw,'Gốc CSV1','Chỉ đọc, không sửa','Giữ nguyên nội dung và thứ tự dòng gốc.','3.1; B1',bounds=bounds)
+    parsed=raw.copy()
+    for col in LIMITS:
+        parsed[col]=pd.to_numeric(parsed[col].str.replace(r'[^\d,.\-]','',regex=True).str.replace(',','.',regex=False),errors='coerce')
+    save_step(folder,stages,parsed,'Chuẩn hóa chuỗi số','Bỏ ký tự ngoài số/dấu; đổi dấu phẩy thành chấm; errors=coerce',
+              'Tái lập quy tắc B1. Chuỗi lẫn đơn vị được chuẩn hóa là giả định; không xác nhận số đo đúng.', '3.3; B1',raw,bounds)
+    bounded=parsed.copy()
+    for col,(lo,hi) in LIMITS.items():
+        bounded[col]=bounded[col].where(bounded[col].between(lo,hi))
+    save_step(folder,stages,bounded,'Áp ngưỡng thử B1','Đưa số ngoài ngưỡng từng biến về NaN; không xóa dòng',
+              'Các ngưỡng kế thừa B1, không dùng IQR để tự động loại điểm và không chứng nhận giới hạn thiết bị.', '3.3; 3.7',parsed,bounds)
+    clock=pd.to_datetime(raw.Date+' '+raw.Time,format='%d/%m/%Y %H:%M:%S',errors='coerce')
+    grid=pd.date_range('2006-12-16 17:24','2010-11-26 21:02',freq='min')
+    assert len(grid)==len(raw) and (clock[clock.notna()].to_numpy()==grid[clock.notna()]).all()
+    timed=bounded.copy();timed['datetime']=grid
+    save_step(folder,stages,timed,'Khôi phục lịch phút','Tạo lịch đều sau khi đối chiếu mọi mốc đọc được',
+              f'{int(clock.isna().sum())} mốc không đọc được được suy ra theo vị trí. Date/Time thô giữ nguyên để truy vết; lịch suy ra chưa xác minh độc lập.', '3.2–3.3; B1',bounded,bounds)
+    eda=timed.copy()
+    # Nội suy theo thời gian trong nhánh EDA, tuyệt đối không dùng làm nhãn dự báo.
+    temp=eda.set_index('datetime')[list(LIMITS)].interpolate(method='time')
+    eda[list(LIMITS)]=temp.to_numpy()
+    save_step(folder,stages,eda,'Nội suy thời gian — EDA','interpolate(method="time") cho 7 biến điện',
+              'Khôi phục chuỗi mô tả; dùng thông tin hai phía nên không dùng nhánh này để dự báo tương lai.', '3.3.3; B1',timed,bounds)
+    filled=eda.copy();filled[list(LIMITS)]=filled[list(LIMITS)].ffill().bfill()
+    save_step(folder,stages,filled,'Điền biên — EDA','ffill rồi bfill cho 7 biến điện',
+              'Hoàn tất quy tắc B1; có thể làm phẳng biến động. Số ô thực thay đổi có thể bằng 0.', 'B1',eda,bounds)
+    delivered=pd.read_csv(CODE/'data/power_clean_csv1.csv',usecols=list(LIMITS))
+    report['power_check']={col:{'max_abs_error':float((filled[col]-delivered[col]).abs().max()),
+                              'matches_tolerance':bool(np.isclose(filled[col],delivered[col],rtol=1e-6,atol=1e-6,equal_nan=True).all())} for col in LIMITS}
+    report['branches']['Điện — EDA (7 biến)']={'stages':stages,'bounds':bounds,
+        'note':'CSV1 toàn bộ 2.075.259 dòng. Giữ Date/Time gốc nên mã thiếu ở hai cột này còn tồn tại dù datetime đã được suy ra. EDA có nội suy hai phía; không dùng làm nhãn mô hình.'}
+    # Nhánh dự báo chỉ lấy công suất tổng; không mang 6 cột EDA sang nhãn.
+    forecast=[];folder=EVIDENCE/'power_forecast';cols=['Date','Time','Global_active_power']
+    a=raw[cols].copy();save_step(folder,forecast,a,'Gốc — cột phục vụ dự báo','Chọn Date, Time, công suất tổng','Đây là phép chiếu 3 cột, không phải mất dòng.', '4.1',bounds=bounds)
+    b=parsed[cols].copy();save_step(folder,forecast,b,'Chuẩn hóa công suất','Chuẩn hóa chuỗi theo B1','Giữ quy tắc mã chính.','4.1',a,bounds)
+    a=bounded[cols].copy();save_step(folder,forecast,a,'Ngưỡng công suất 0–11 kW','Số ngoài ngưỡng về NaN','Không dùng ngưỡng học từ test.','4.1',b,bounds)
+    b=a.copy();b['datetime']=grid
+    save_step(folder,forecast,b,'Lịch phút cho dự báo','Đối chiếu mốc đọc được, khôi phục lịch đều','Lịch theo giả định đã công khai.','4.1',a,bounds)
+    a=b.copy();a['Global_active_power']=a.groupby(a.datetime.dt.floor('D')).Global_active_power.ffill()
+    save_step(folder,forecast,a,'Điền tiến trong từng ngày','ffill theo nhóm ngày; không bfill, không nối qua ngày',
+              'Đầu ngày thiếu có thể còn NaN. Chỉ dùng quá khứ; nhãn ngày vẫn phải qua tiêu chí đủ 1440 phút và tỷ lệ thiếu ≤20%.','4.1–4.2',b,bounds)
+    report['branches']['Điện — nhánh dự báo (công suất)']={'stages':forecast,'bounds':bounds,
+        'note':'Chỉ phân tích 3 cột nguồn phục vụ công suất dự báo. Kết thúc ở công suất phút; chưa tạo train/test hoặc huấn luyện mô hình. Việc chọn ngày và lag được thực hiện trong mã chính Chương 4.'}
+    del raw,parsed,bounded,timed,eda,filled,delivered,a,b,temp
+    # CSV2 có hai dòng metadata; tìm header theo mã nguồn thay vì coi metadata là quan sát.
+    lines=weather_path.read_text(encoding='utf-8-sig').splitlines()
+    skip=next(i for i,line in enumerate(lines) if 'time' in line.split(','))
+    raw=pd.read_csv(weather_path,skiprows=skip,dtype=str,keep_default_na=False)
+    # Giữ nguyên tên cột nguồn trong mọi trạng thái để so sánh có cùng ý nghĩa.
+    bounds=bounds_for(raw);stages=[];folder=EVIDENCE/'weather'
+    save_step(folder,stages,raw,'Gốc CSV2','Bỏ qua metadata trước header','Metadata không phải quan sát; tên cột thô được giữ trong các bảng so sánh.','3.1–3.3.2',bounds=bounds)
+    parsed=raw.copy()
+    for col in WEATHER:parsed[col]=pd.to_numeric(parsed[col],errors='coerce')
+    save_step(folder,stages,parsed,'Chuyển số thời tiết','pd.to_numeric(errors="coerce")','Chuỗi lỗi được chuyển NaN, không xóa đơn vị như CSV1.','3.3.2',raw,bounds)
+    clock=pd.to_datetime(raw.time,format='%Y-%m-%dT%H:%M',errors='coerce')
+    grid=pd.Series(pd.date_range('2006-12-16 00:00','2010-11-26 23:00',freq='h'))
+    assert len(grid)==len(raw) and (clock[clock.notna()]==grid[clock.notna()]).all()
+    timed=parsed.copy();timed['datetime']=clock.fillna(grid)
+    save_step(folder,stages,timed,'Khôi phục lịch giờ','Chỉ suy ra mốc lỗi sau khi kiểm tra lịch',f'{int(clock.isna().sum())} mốc được suy ra; giữ cột time thô.','3.3.2',parsed,bounds)
+    filled=timed.copy();continuous=[c for c in WEATHER if WEATHER[c]!='precipitation_mm']
+    filled[continuous]=filled[continuous].ffill()
+    save_step(folder,stages,filled,'Điền tiến 4 biến thời tiết','ffill; không nội suy từ tương lai','Giả định giá trị gần nhất còn phù hợp; cần kiểm tra thời điểm dữ liệu sẵn có.','3.3.2',timed,bounds)
+    rain=filled.copy();rain['precipitation (mm)']=rain['precipitation (mm)'].fillna(0)
+    save_step(folder,stages,rain,'Điền mưa thiếu bằng 0','fillna(0) cho mưa','Giả định của bài, có thể làm thấp tổng mưa; không coi là số đo đã xác thực.','3.3.2',filled,bounds)
+    clipped=rain.copy()
+    clipped['RELATIVE_HUMIDITY_2M (%)']=clipped['RELATIVE_HUMIDITY_2M (%)'].clip(0,100)
+    for col in ['wind_speed_10m (km/h)','precipitation (mm)']:clipped[col]=clipped[col].clip(lower=0)
+    save_step(folder,stages,clipped,'Giới hạn miền giá trị','Độ ẩm 0–100%; gió và mưa ≥0','Giới hạn theo mã nguồn; không tự xóa các điểm ngoài IQR.','3.3.2',rain,bounds)
+    delivered=pd.read_csv(CODE/'data/weather_clean_csv2.csv')
+    report['weather_check']={col:bool(np.allclose(clipped[col],delivered[new],equal_nan=True)) for col,new in WEATHER.items()}
+    report['weather_metadata']=lines[:skip]
+    report['branches']['Thời tiết — CSV2']={'stages':stages,'bounds':bounds,
+        'note':'34.608 quan sát giờ. Giữ tên biến thô để so sánh; bảng mô hình đổi tên theo từ điển đính kèm. Cột time gốc được giữ để truy vết, không dùng để ghép sau khôi phục.'}
+    # Kiểm tra quan hệ ghép bằng các khóa của bảng đã bàn giao, không giả vờ chạy lại ML.
+    merged=pd.read_parquet(CODE/'data/merged_minute_float32_B3.parquet',columns=['datetime','weather_datetime','hour_key'])
+    report['merge_check']={'rows':len(merged),'unique_minutes':bool(merged.datetime.is_unique),
+        'hour_keys_match':bool(merged.datetime.dt.floor('h').eq(merged.weather_datetime).all()),
+        'weather_hours_unique':bool(clipped.datetime.is_unique),
+        'all_hours_found':bool(merged.hour_key.isin(clipped.datetime).all()),
+        'note':'Kiểm tra bảng Parquet nộp kèm: khóa phút–giờ và quan hệ many-to-one. Không huấn luyện lại mô hình.'}
+    assert all(v['matches_tolerance'] for v in report['power_check'].values())
+    assert all(report['weather_check'].values())
+    (EVIDENCE/'manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+    print('Completed: evidence from full real datasets; EDA and weather match supplied clean data.',flush=True)
+
+
+if __name__=='__main__':
+    if hasattr(sys.stdout,'reconfigure'):sys.stdout.reconfigure(encoding='utf-8')
+    prepare()
+

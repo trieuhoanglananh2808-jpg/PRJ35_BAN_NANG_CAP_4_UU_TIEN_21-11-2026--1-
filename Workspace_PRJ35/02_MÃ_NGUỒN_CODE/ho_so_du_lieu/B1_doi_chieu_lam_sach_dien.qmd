@@ -1,0 +1,88 @@
+---
+title: Hồ sơ kỹ thuật cho mục 3.3.3 — Đối chiếu phương án làm sạch điện
+jupyter: python3
+---
+
+
+
+## 1. Chạy lại phương án trong tài liệu
+
+```{python}
+#| execution: {iopub.execute_input: '2026-11-20T16:34:40.137687Z', iopub.status.busy: '2026-11-20T16:34:40.137508Z', iopub.status.idle: '2026-11-20T16:34:56.232603Z', shell.execute_reply: '2026-11-20T16:34:56.232098Z'}
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv(
+    r"../data/nguon_goc/26_2521001040_Triệu Hoàng Lan Anh_CSV1.csv",
+    sep=";",
+    dtype=str,
+    keep_default_na=False
+)
+
+num_cols = [
+    'Global_active_power', 'Global_reactive_power', 'Voltage',
+    'Global_intensity', 'Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'
+]
+
+MISSING_STRS = ['?', 'null', 'NULL', 'None', 'N/A', '-', '']
+gio_tho_b1 = pd.to_datetime(df['Date'] + ' ' + df['Time'], format='%d/%m/%Y %H:%M:%S', errors='coerce')
+df.replace(MISSING_STRS, np.nan, inplace=True)
+
+for col in num_cols:
+    df[col] = df[col].astype(str).str.replace(r'[^\d,.\-]', '', regex=True)
+    df[col] = df[col].str.replace(',', '.', regex=False)
+    df[col] = pd.to_numeric(df[col], errors='coerce')
+
+PHYSICAL_LIMITS = {
+    'Global_active_power':   (0.0, 11.0),
+    'Global_reactive_power': (0.0, 2.0),
+    'Voltage':               (210.0, 255.0),
+    'Global_intensity':      (0.0, 50.0),
+    'Sub_metering_1':        (0.0, 90.0),
+    'Sub_metering_2':        (0.0, 82.0),
+    'Sub_metering_3':        (0.0, 35.0),
+}
+
+for col, (lower_bound, upper_bound) in PHYSICAL_LIMITS.items():
+    df.loc[(df[col] < lower_bound) | (df[col] > upper_bound), col] = np.nan
+
+full_date_range = pd.date_range(start='2006-12-16 17:24', end='2010-11-26 21:02', freq='1min')
+assert len(df) == len(full_date_range)
+doc_duoc_b1 = gio_tho_b1.notna()
+assert (gio_tho_b1[doc_duoc_b1].to_numpy() == full_date_range[doc_duoc_b1]).all()
+df.index = full_date_range
+
+df[num_cols] = df[num_cols].interpolate(method='time')
+df[num_cols] = df[num_cols].ffill().bfill()
+```
+
+## 2. So sánh với file điện sạch hiện có
+
+```{python}
+#| execution: {iopub.execute_input: '2026-11-20T16:34:56.234622Z', iopub.status.busy: '2026-11-20T16:34:56.234423Z', iopub.status.idle: '2026-11-20T16:34:59.054875Z', shell.execute_reply: '2026-11-20T16:34:59.054398Z'}
+power_da_co = pd.read_csv(r"../data/power_clean_csv1.csv", parse_dates=['datetime'])
+assert len(df) == len(power_da_co), "Hai bản khác số dòng, chưa thể đối chiếu theo vị trí."
+print("Số dòng:", len(df))
+print("Nhãn thời gian trùng theo vị trí:", (df.index == power_da_co['datetime']).all())
+ket_qua = []
+for col in num_cols:
+    lech = (df[col].to_numpy() - power_da_co[col].to_numpy())
+    khop = np.isclose(df[col].to_numpy(), power_da_co[col].to_numpy(), rtol=1e-9, atol=1e-9, equal_nan=True)
+    ket_qua.append({
+        'cot': col,
+        'so_dong_khac': int((~khop).sum()),
+        'so_dong_khac_nguong_1e6': int((~np.isclose(df[col].to_numpy(), power_da_co[col].to_numpy(), rtol=1e-6, atol=1e-6, equal_nan=True)).sum()),
+        'ty_le_khac_pct': (~khop).mean() * 100,
+        'chenh_lech_lon_nhat': np.nanmax(np.abs(lech))
+    })
+doi_chieu_b1 = pd.DataFrame(ket_qua)
+print(doi_chieu_b1.to_string(index=False))
+```
+
+## 3. Lưu bảng đối chiếu
+
+```{python}
+#| execution: {iopub.execute_input: '2026-11-20T16:34:59.056730Z', iopub.status.busy: '2026-11-20T16:34:59.056513Z', iopub.status.idle: '2026-11-20T16:34:59.067233Z', shell.execute_reply: '2026-11-20T16:34:59.066757Z'}
+display(doi_chieu_b1)
+```
+

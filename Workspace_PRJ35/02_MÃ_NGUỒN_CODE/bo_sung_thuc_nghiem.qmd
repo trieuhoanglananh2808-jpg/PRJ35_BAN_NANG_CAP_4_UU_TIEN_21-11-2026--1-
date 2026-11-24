@@ -1,0 +1,260 @@
+---
+jupyter: python3
+---
+
+"""Thực nghiệm hồi cứu bổ sung; không chọn lại mô hình theo kết quả test."""
+
+from pathlib import Path
+import json
+import numpy as np
+import pandas as pd
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
+
+BASE = Path(__file__).resolve().parent
+OUT = BASE / "dashboard_csv"
+FEATURES = [
+    "dien_tre_1_kw",
+    "dien_tre_7_kw",
+    "tb_7_ngay_truoc_kw",
+    "nhiet_do_truoc_1",
+    "nhiet_do_tb_7_truoc",
+    "thu",
+    "thang",
+]
+
+
+def make_features(daily, threshold):
+    """Giữ lịch liên tục; chỉ điền tiến trong ngày ở nguồn Parquet."""
+    valid = (
+        daily["n"].eq(1440)
+        & daily["count"].eq(1440)
+        & daily["missing_pct"].le(threshold)
+    )
+    y = daily["power"].where(valid)
+    x = pd.DataFrame(index=daily.index)
+    x[FEATURES[0]] = y.shift(1)
+    x[FEATURES[1]] = y.shift(7)
+    x[FEATURES[2]] = y.shift(1).rolling(7, min_periods=7).mean()
+    x[FEATURES[3]] = daily["temperature"].shift(1)
+    x[FEATURES[4]] = daily["temperature"].shift(1).rolling(7, min_periods=7).mean()
+    x["thu"], x["thang"] = x.index.dayofweek, x.index.month
+    return x, y
+
+
+def model(kind):
+    """Giữ nguyên cấu hình chính; không tìm kiếm siêu tham số."""
+    numeric = StandardScaler() if kind == "OLS" else "passthrough"
+    encoder = OneHotEncoder(
+        sparse_output=False, drop="first" if kind == "OLS" else None
+    )
+    estimator = (
+        LinearRegression()
+        if kind == "OLS"
+        else RandomForestRegressor(
+            n_estimators=200, max_depth=5, min_samples_leaf=5, random_state=42
+        )
+    )
+    return Pipeline(
+        [
+            (
+                "preprocess",
+                ColumnTransformer(
+                    [
+                        ("numeric", numeric, FEATURES[:5]),
+                        ("calendar", encoder, FEATURES[5:]),
+                    ]
+                ),
+            ),
+            ("model", estimator),
+        ]
+    )
+
+
+def metrics(y, pred):
+    keep = y.notna() & pred.notna()
+    err = pred[keep] - y[keep]
+    return {
+        "so_ngay_cham": int(keep.sum()),
+        "MAE_kw": float(err.abs().mean()),
+        "RMSE_kw": float(np.sqrt((err**2).mean())),
+    }
+
+
+def save(df, name):
+    df.to_csv(OUT / (name + ".csv"), index=False, encoding="utf-8-sig")
+
+
+def main():
+    protocol = json.loads((BASE / "quy_tac_bo_sung.json").read_text(encoding="utf-8"))
+    assert protocol["thresholds"] == [15, 20, 25]
+    p = pd.read_parquet(BASE / "data/merged_minute_float32_B3.parquet")
+    day = p["datetime"].dt.floor("D")
+    daily = (
+        p.groupby(day)
+        .agg(
+            n=("datetime", "size"),
+            count=("cong_suat_du_bao_kw", "count"),
+            missing_pct=("can_dien_du_bao", "mean"),
+            power=("cong_suat_du_bao_kw", "mean"),
+            temperature=("apparent_temperature_c", "mean"),
+        )
+        .asfreq("D")
+    )
+    daily["missing_pct"] *= 100
+    cut_test = int(len(daily) * 0.8)
+    cut_val = int(cut_test * 0.8)
+    assert len(daily) == 1442
+    x, y = make_features(daily, 20)
+    train = (np.arange(len(x)) < cut_val) & x.notna().all(axis=1) & y.notna()
+    assert train.sum() == 331
+    rf = model("RF").fit(x.loc[train], y.loc[train])
+    summary = []
+    common = []
+    detail = []
+    for split, idx in [
+        ("validation", x.index[cut_val:cut_test]),
+        ("test", x.index[cut_test:]),
+    ]:
+        xx, yy = x.loc[idx], y.loc[idx]
+        ready = xx.notna().all(axis=1)
+        pred = pd.Series(np.nan, index=idx)
+        pred.loc[ready] = rf.predict(xx.loc[ready])
+        baseline = xx["dien_tre_7_kw"]
+        combined = pred.fillna(baseline)
+        fallback = baseline.where(~ready)
+        result = pd.DataFrame(
+            {
+                "ngay": idx,
+                "tap": split,
+                "nhan_kw": yy,
+                "RF": pred,
+                "Baseline": baseline,
+                "He_thong": combined,
+                "nhanh": np.where(
+                    ready, "RF", np.where(baseline.notna(), "Baseline du phong", "Dung")
+                ),
+            }
+        )
+        detail.append(result)
+        for label, pr in [
+            ("RF", pred),
+            ("Baseline", baseline),
+            ("Baseline du phong", fallback),
+            ("He thong", combined),
+        ]:
+            summary.append(
+                {
+                    "tap": split,
+                    "phuong_an": label,
+                    "ngay_lich": len(idx),
+                    "so_ngay_phat": int(pr.notna().sum()),
+                    "ty_le_phat_pct": float(pr.notna().mean() * 100),
+                    **metrics(yy, pr),
+                }
+            )
+        joint = pred.notna() & baseline.notna() & yy.notna()
+        for label, pr in [("RF", pred), ("Baseline", baseline), ("He thong", combined)]:
+            common.append(
+                {"tap": split, "phuong_an": label, **metrics(yy.where(joint), pr)}
+            )
+        old = pd.read_csv(OUT / f"du_bao_{split}.csv")
+        assert np.allclose(
+            pred.reindex(pd.to_datetime(old.ngay)),
+            old["Random Forest"],
+            rtol=1e-5,
+            atol=1e-7,
+        )
+    save(pd.DataFrame(summary), "fallback_tong_hop")
+    save(pd.DataFrame(common), "fallback_cung_ngay")
+    save(pd.concat(detail, ignore_index=True), "fallback_tung_ngay")
+    # Độ nhạy chỉ trên train/validation; không đọc kết quả test để chọn ngưỡng.
+    sets = {q: make_features(daily.iloc[:cut_test], q) for q in [15, 20, 25]}
+    common_idx = daily.index[cut_val:cut_test]
+    for xx, yy in sets.values():
+        common_idx = common_idx.intersection(
+            xx.index[xx.notna().all(axis=1) & yy.notna()]
+        )
+    sens = []
+    for q, (xx, yy) in sets.items():
+        tr = (np.arange(len(xx)) < cut_val) & xx.notna().all(axis=1) & yy.notna()
+        va = (np.arange(len(xx)) >= cut_val) & xx.notna().all(axis=1) & yy.notna()
+        for kind in ["OLS", "RF"]:
+            m = model(kind).fit(xx.loc[tr], yy.loc[tr])
+            pr = pd.Series(m.predict(xx.loc[va]), index=xx.index[va])
+            sens.append(
+                {
+                    "nguong_pct": q,
+                    "mo_hinh": kind,
+                    "ngay_train": int(tr.sum()),
+                    "ngay_validation": int(va.sum()),
+                    "MAE_mau_rieng_kw": metrics(yy, pr)["MAE_kw"],
+                    "ngay_chung": len(common_idx),
+                    "MAE_cung_ngay_nhan_rieng_kw": metrics(
+                        yy.reindex(common_idx), pr.reindex(common_idx)
+                    )["MAE_kw"],
+                }
+            )
+    save(pd.DataFrame(sens), "do_nhay_validation")
+    # Minh chứng ô thật: 0 hợp lệ, không đọc được, ngoài ngưỡng và chuỗi được chuẩn hóa.
+    rawfile = next((BASE / "data/nguon_goc").glob("*CSV1.csv"))
+    raw = pd.read_csv(rawfile, sep=";", dtype=str, keep_default_na=False)
+    examples = []
+    counts = []
+    for col, upper in [
+        ("Global_active_power", 11),
+        ("Sub_metering_1", 90),
+        ("Sub_metering_2", 82),
+        ("Sub_metering_3", 35),
+    ]:
+        s = raw[col]
+        parsed = pd.to_numeric(
+            s.str.replace(r"[^\d,.\-]", "", regex=True).str.replace(
+                ",", ".", regex=False
+            ),
+            errors="coerce",
+        )
+        masks = {
+            "0 hop le": parsed.eq(0),
+            "Khong doc duoc": parsed.isna(),
+            "Ngoai nguong thu": parsed.notna() & ~parsed.between(0, upper),
+            "Chuan hoa chuoi": pd.to_numeric(s, errors="coerce").isna()
+            & parsed.between(0, upper),
+        }
+        counts.append(
+            {
+                "cot": col,
+                "so_0_hop_le": int(masks["0 hop le"].sum()),
+                "so_khong_doc_duoc": int(masks["Khong doc duoc"].sum()),
+                "so_ngoai_nguong": int(masks["Ngoai nguong thu"].sum()),
+            }
+        )
+        for label, mask in masks.items():
+            for i in np.flatnonzero(mask.to_numpy())[:2]:
+                examples.append(
+                    {
+                        "dong_du_lieu_1_based": int(i + 1),
+                        "cot": col,
+                        "phan_loai": label,
+                        "gia_tri_goc": s.iloc[i],
+                        "sau_chuan_hoa": parsed.iloc[i],
+                        "gia_tri_EDA": p[col].iloc[i],
+                        "cong_suat_du_bao_kw": (
+                            p["cong_suat_du_bao_kw"].iloc[i]
+                            if col == "Global_active_power"
+                            else np.nan
+                        ),
+                    }
+                )
+    save(pd.DataFrame(examples), "vi_du_lam_sach")
+    save(pd.DataFrame(counts), "phan_loai_so_0_va_loi")
+    print(pd.DataFrame(summary).to_string(index=False))
+    print(pd.DataFrame(sens).to_string(index=False))
+
+
+if __name__ == "__main__":
+    main()
+

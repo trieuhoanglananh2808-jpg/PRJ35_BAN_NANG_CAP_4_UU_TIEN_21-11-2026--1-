@@ -1,0 +1,34 @@
+---
+jupyter: python3
+---
+
+"""Chạy trọn gói từ bất kỳ thư mục làm việc nào."""
+
+from pathlib import Path
+import os
+import subprocess
+import sys
+
+
+def main():
+    # Windows redirected streams may default to cp1252.
+    # Propagate UTF-8 to child scripts and benchmark subprocesses.
+    os.environ["PYTHONIOENCODING"] = "utf-8"
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
+    code = Path(__file__).resolve().parent
+    os.chdir(code)
+    for script in [
+        "TOAN_BO_MA_NGUON_PRJ35.py",
+        "bo_sung_thuc_nghiem.py",
+        "cap_nhat_dashboard.py",
+    ]:
+        print("Running:", script, flush=True)
+        subprocess.run([sys.executable, "-u", str(code / script)], check=True)
+    print("Completed all steps.", flush=True)
+
+
+if __name__ == "__main__":
+    main()
+

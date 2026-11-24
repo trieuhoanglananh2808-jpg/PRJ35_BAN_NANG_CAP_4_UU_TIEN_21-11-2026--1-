@@ -1,0 +1,58 @@
+---
+jupyter: python3
+---
+
+"""Đồng bộ dữ liệu nhúng từ CSV; không cần mạng khi mở dashboard."""
+
+from pathlib import Path
+import csv, json, re
+
+
+def main():
+    code = Path(__file__).resolve().parent
+    html = next(code.parent.glob("03*/*.html"))
+    data = {
+        p.stem: list(csv.DictReader(p.open(encoding="utf-8-sig", newline="")))
+        for p in (code / "dashboard_csv").glob("*.csv")
+    }
+    text = html.read_text(encoding="utf-8")
+    text = re.sub(
+        r"const D\s*=\s*\{.*?\};",
+        lambda _: "const D=" + json.dumps(data, ensure_ascii=False) + ";",
+        text,
+        count=1,
+        flags=re.S,
+    )
+    text = re.sub(
+        r"</script><details.*?</details></body></html>",
+        "</script></body></html>",
+        text,
+        flags=re.S,
+    )
+    text = re.sub(
+        r"<!-- SUPPLEMENT START -->.*?<!-- SUPPLEMENT END -->", "", text, flags=re.S
+    )
+    block = """<!-- SUPPLEMENT START -->
+<details id="supplement" style="margin:24px auto;padding:24px;max-width:1220px;background:#11202e;color:#f3f7ff;border:1px solid #527184;border-radius:8px">
+<summary style="cursor:pointer;font-size:20px">Thực nghiệm bổ sung · độ bao phủ, fallback và chất lượng dữ liệu</summary>
+<p>Đánh giá hồi cứu; thời tiết sẵn có đúng lúc là giả định. Sai số trên phạm vi khác nhau không được so trực tiếp. Ngưỡng độ nhạy chỉ xét train/validation.</p>
+<div id="supp-tables"></div>
+<p>Nút “Nạp CSV mới” cập nhật cả biểu đồ và bảng bổ sung. Không suy kết quả thành mức tiết kiệm điện hoặc tiền.</p>
+</details>
+<script>
+const extraTables=[['fallback_tong_hop','Độ bao phủ và sai số theo phạm vi riêng'],['fallback_cung_ngay','So sánh trên cùng ngày'],['do_nhay_validation','Độ nhạy trên phần phát triển'],['kiem_tra_chat_luong_sub','Chất lượng từng nhóm đo'],['bao_phu_van_hanh','Bốn trạng thái đầu vào và nhãn'],['phan_loai_so_0_va_loi','Phân biệt số 0 hợp lệ và lỗi']];
+const colNames={tap:'Tập',phuong_an:'Phương án',ngay_lich:'Ngày lịch',so_ngay_phat:'Ngày phát',ty_le_phat_pct:'Phát (%)',so_ngay_cham:'Ngày chấm',MAE_kw:'MAE (kW)',RMSE_kw:'RMSE (kW)',nguong_pct:'Ngưỡng (%)',mo_hinh:'Mô hình',ngay_train:'Ngày train',ngay_validation:'Ngày validation',MAE_mau_rieng_kw:'MAE mẫu riêng',ngay_chung:'Ngày chung',MAE_cung_ngay_nhan_rieng_kw:'MAE cùng ngày',nguong_tung_cot_pct:'Ngưỡng từng cột (%)',so_ngay:'Số ngày',ty_trong_sub3_pct:'Nhóm 3 (%)',trang_thai:'Trạng thái',cot:'Cột',so_0_hop_le:'Số 0 hợp lệ',so_khong_doc_duoc:'Không đọc được',so_ngoai_nguong:'Ngoài ngưỡng'};
+function renderSupp(){const host=document.getElementById('supp-tables');host.replaceChildren();for(const [key,title] of extraTables){const rows=D[key];if(!rows||!rows.length)continue;const h=document.createElement('h3');h.textContent=title;host.append(h);const wrap=document.createElement('div');wrap.style.overflowX='auto';const table=document.createElement('table');table.dataset.source=key;table.style.cssText='width:100%;border-collapse:collapse;margin-bottom:24px';const keys=Object.keys(rows[0]);const tr=document.createElement('tr');for(const k of keys){const th=document.createElement('th');th.textContent=colNames[k]||k;th.style.cssText='padding:10px;border-bottom:2px solid #68dbff;text-align:left';tr.append(th)}table.append(tr);for(const r of rows){const line=document.createElement('tr');for(const k of keys){const td=document.createElement('td');let v=r[k];td.textContent=v===''?'—':Number.isFinite(Number(v))&&v.includes('.')?Number(v).toLocaleString('vi-VN',{maximumFractionDigits:4}):v;td.style.cssText='padding:10px;border-bottom:1px solid #34495d';line.append(td)}table.append(line)}wrap.append(table);host.append(wrap)}}
+const oldUpload=nav.querySelector('input').onchange;
+nav.querySelector('input').onchange=async e=>{await oldUpload(e);renderSupp()};
+renderSupp();
+</script><!-- SUPPLEMENT END -->
+"""
+    text = text.replace("</body>", block + "</body>")
+    html.write_text(text, encoding="utf-8")
+    print("Dashboard synchronized:", len(data), "CSV")
+
+
+if __name__ == "__main__":
+    main()
+
